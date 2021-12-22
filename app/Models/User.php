@@ -49,6 +49,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\profileModel');
     }
 
-
+    public function studentprofileFK()
+    {
+        return $this->hasOne('App\Models\studentprofileModel');
+    }
 
 }

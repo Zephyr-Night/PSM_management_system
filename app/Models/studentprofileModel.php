@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class profileModel extends Model
+class studentprofileModel extends Model
 {
-    protected $table = 'lecture';
     use HasFactory;
 
     protected $fillable= [
@@ -22,7 +22,6 @@ class profileModel extends Model
 
     public function inventoryusage()
     {
-        return $this->hasMany('App\Models\inventoryUsage');
+        return $this->hasMany('App\Models\inventoryUsage', );
     }
-
 }

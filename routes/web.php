@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\inventoryusageController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,9 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//inventory usage
+Route::resource('/inventory', inventoryusageController::class);
