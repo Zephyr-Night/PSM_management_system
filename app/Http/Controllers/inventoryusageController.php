@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\inventoryitemModel;
 use App\Models\inventoryUsage;
+use App\Models\studentprofileModel;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class inventoryusageController extends Controller
@@ -37,9 +39,18 @@ class inventoryusageController extends Controller
      */
     public function store(Request $request)
     {
-        inventoryUsage::create($request->all());
-        return redirect('inventory/create');
+        //retrive user Primary Key data by using session (get from LoginController)
+        $getsession = $request->session()->get('userprimarykey');
 
+
+
+
+        $studentprofile = new studentprofileModel;
+        $student = $studentprofile::where('user_id', $getsession)->firstOrFail();
+
+        // inventoryUsage::create($request->all());
+        // return redirect('inventory/create');
+        return $getsession;
     }
 
     /**

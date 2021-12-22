@@ -26,6 +26,10 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        //save data(userId) to session using put()
+        $saveuserid = $user->id;
+        $request->session()->put(['userprimarykey'=>$saveuserid]);
+
 
     if ($user->islecture == true ) {// do your magic here
         return redirect('/home');
