@@ -43,8 +43,7 @@ class inventoryusageController extends Controller
         $getsession = $request->session()->get('userprimarykey');
 
 
-
-
+        //https://stackoverflow.com/questions/43372181/store-data-to-multiple-tables-with-foreign-keys-in-store-function-in-laravel
 
         return $getsession;
     }
