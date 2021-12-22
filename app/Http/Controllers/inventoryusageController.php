@@ -45,11 +45,7 @@ class inventoryusageController extends Controller
 
 
 
-        $studentprofile = new studentprofileModel;
-        $student = $studentprofile::where('user_id', $getsession)->firstOrFail();
 
-        // inventoryUsage::create($request->all());
-        // return redirect('inventory/create');
         return $getsession;
     }
 
