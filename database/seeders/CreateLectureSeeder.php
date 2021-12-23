@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\lectureprofileModel;
 use App\Models\profileModel;
 use Illuminate\Database\Seeder;
 
@@ -43,8 +44,7 @@ class CreateLectureSeeder extends Seeder
         ];
 
         foreach ($lecture as $key => $value) {
-
-            profileModel::create($value);
+            lectureprofileModel::create($value);
 
         }
     }

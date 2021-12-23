@@ -28,8 +28,10 @@ class LoginController extends Controller
     {
         //save data(userId) to session using put()
         $saveuserid = $user->id;
-        $request->session()->put(['userprimarykey'=>$saveuserid]);
+        $checkiflecture = $user->islecture;
 
+        $request->session()->put(['userprimarykey'=>$saveuserid]);
+        $request->session()->put(['islecture'=>$checkiflecture]);
 
     if ($user->islecture == true ) {// do your magic here
         return redirect('/home');

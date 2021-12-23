@@ -43,17 +43,20 @@ class inventoryusageController extends Controller
         //retrive user Primary Key data by using session (get from LoginController)
         $getsession = $request->session()->get('userprimarykey');
 
-        $user = new studentprofileModel(['user_id'=>$getsession]);
+        //create object of class model studentprofileModel
+        $user = new studentprofileModel();
 
+        //find the first user_id data (foreign key) in db (table: studentprofile)
+        $user = $user::where('user_id',$getsession)->firstOrFail();
+
+        //retieve all input data
         $inventoryusage = $request->all();
 
+        //create object of class model inventoryusage
         $addinventory = new inventoryUsage($inventoryusage);
 
+        //save data in function studentprofileModel called inventoryusage()
         $user->inventoryusage()->save($addinventory);
-
-
-
-
 
 
         return $inventoryusage;

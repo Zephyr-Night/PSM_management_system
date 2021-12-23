@@ -10,6 +10,8 @@ class studentprofileModel extends Model
 {
     use HasFactory;
 
+    protected $table = 'studentprofile';
+
     protected $fillable= [
         'studentName',
         'studentPhone',
