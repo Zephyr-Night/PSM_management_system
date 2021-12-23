@@ -22,4 +22,5 @@
 </div>
 
 <button type="button" onclick="window.location='{{route('inventory.create')}}'">Add.</button>
+<button type="button" onclick="window.location='{{route('inventory.index')}}'">home.</button>
 @endsection

@@ -10,21 +10,30 @@ use Illuminate\Http\Request;
 
 class inventoryusageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
+        //retrive user Primary Key data by using session (get from LoginController)
+        $getsession = session()->get('userprimarykey');
 
+        //create object of class model studentprofileModel
+        $user = new studentprofileModel();
+
+        //find the first user_id data (foreign key) in db (table: studentprofile)
+        $user = $user::where('user_id',$getsession)->firstOrFail();
+
+        //get all inventoryUsage primary key for specific user
+        $inventorylist = inventoryUsage::Select()->where('studentId',$user->studentId)->with('inventoryitem')->get();
+
+
+
+
+
+
+       return view('inventoryusage.index',compact(['inventorylist']));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //get list inventoryname and id
@@ -32,12 +41,6 @@ class inventoryusageController extends Controller
         return view('inventoryusage.request',compact(['inventoryItem',]));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //retrive user Primary Key data by using session (get from LoginController)
@@ -59,15 +62,10 @@ class inventoryusageController extends Controller
         $user->inventoryusage()->save($addinventory);
 
 
-        return $inventoryusage;
+        return redirect('inventory');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //

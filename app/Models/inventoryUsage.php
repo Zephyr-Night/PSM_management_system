@@ -18,4 +18,8 @@ class inventoryUsage extends Model
     ];
     public $timestamps = false;
 
+    public function inventoryitem()
+    {
+        return $this->belongsTo('App\Models\inventoryitemModel','itemId','itemId');
+    }
 }

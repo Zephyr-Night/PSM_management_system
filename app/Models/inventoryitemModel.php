@@ -24,7 +24,7 @@ class inventoryitemModel extends Model
 
     public function inventoryitemFK()
     {
-        return $this->hasOne('App\Models\inventoryUsage','itemId');
+        return $this->hasMany('App\Models\inventoryUsage','itemId','itemId');
     }
 
 }
