@@ -53,7 +53,8 @@ class inventoryusageController extends Controller
 
 
 
-        //https://stackoverflow.com/questions/43372181/store-data-to-multiple-tables-with-foreign-keys-in-store-function-in-laravel
+
+
 
         return $inventoryusage;
     }
