@@ -27,8 +27,9 @@ class inventoryusageController extends Controller
      */
     public function create()
     {
-        $inventoryItem = inventoryitemModel::all(['inventoryname']);
-        return view('inventoryusage.request',compact('inventoryItem'));
+        //get list inventoryname and id
+        $inventoryItem = inventoryitemModel::all(['inventoryname','itemId']);
+        return view('inventoryusage.request',compact(['inventoryItem',]));
     }
 
     /**
@@ -42,10 +43,19 @@ class inventoryusageController extends Controller
         //retrive user Primary Key data by using session (get from LoginController)
         $getsession = $request->session()->get('userprimarykey');
 
+        $user = new studentprofileModel(['user_id'=>$getsession]);
+
+        $inventoryusage = $request->all();
+
+        $addinventory = new inventoryUsage($inventoryusage);
+
+        $user->inventoryusage()->save($addinventory);
+
+
 
         //https://stackoverflow.com/questions/43372181/store-data-to-multiple-tables-with-foreign-keys-in-store-function-in-laravel
 
-        return $getsession;
+        return $inventoryusage;
     }
 
     /**

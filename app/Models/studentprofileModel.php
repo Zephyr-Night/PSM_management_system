@@ -11,17 +11,18 @@ class studentprofileModel extends Model
     use HasFactory;
 
     protected $fillable= [
-        'lectureName',
-        'lecturePhone',
-        'lecture_Skill',
+        'studentName',
+        'studentPhone',
+        'student_Skill',
         'skill_Level',
     ];
+
 
     protected $guard = ['user_id'];
     public $timestamps = false;
 
     public function inventoryusage()
     {
-        return $this->hasMany('App\Models\inventoryUsage', );
+        return $this->hasMany('App\Models\inventoryUsage','studentId','studentId' );
     }
 }

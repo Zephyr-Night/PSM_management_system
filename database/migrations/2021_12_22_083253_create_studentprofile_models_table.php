@@ -14,7 +14,7 @@ class CreateStudentprofileModelsTable extends Migration
     public function up()
     {
         Schema::create('studentprofile_models', function (Blueprint $table) {
-            $table->id('studentId');
+            $table->id ('studentId');
             $table->integer('user_id')->unsigned()->nullable()->index();
             $table->string('studentName');
             $table->string('studentPhone');

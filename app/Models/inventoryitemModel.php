@@ -12,7 +12,6 @@ class inventoryitemModel extends Model
 
     protected $fillable= [
         'itemId',
-
     ];
 
     protected $guard= [

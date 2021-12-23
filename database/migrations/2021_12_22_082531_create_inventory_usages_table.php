@@ -13,7 +13,7 @@ class CreateInventoryUsagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('inventory_usages', function (Blueprint $table) {
+        Schema::create('xx', function (Blueprint $table) {
             $table->id();
             $table->integer('studentId')->unsigned()->nullable()->index();
             $table->integer('lecture_id')->unsigned()->nullable()->index();
@@ -32,6 +32,6 @@ class CreateInventoryUsagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventory_usages');
+        Schema::dropIfExists('xx');
     }
 }
