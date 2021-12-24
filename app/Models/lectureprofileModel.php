@@ -25,4 +25,8 @@ class lectureprofileModel extends Model
         return $this->hasMany('App\Models\inventoryUsage');
     }
 
+    
+    public function expertiseFK(){
+        return $this->hasMany('App\Models\ExpertiseModel');
+    }
 }
