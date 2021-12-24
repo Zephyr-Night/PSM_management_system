@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\inventoryusageController;
+use App\Http\Controllers\ExpertiseController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,3 +33,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //inventory usage
 Route::resource('/inventory', inventoryusageController::class);
+
+Route::resource('/expertise', ExpertiseController::class);
