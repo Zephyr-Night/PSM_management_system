@@ -22,6 +22,14 @@
         <td>{{$inventoryindex->Enddate}}</td>
         <td>{{$inventoryindex->reason}}</td>
         <td>{{$inventoryindex->status}}</td>
+        <td>
+            <form action="{{ route('inventory.destroy',$inventoryindex->id) }}" method="post">
+            @csrf
+            <input type="hidden" name="_method" value="DELETE">
+
+            <input type="submit" value="Cancel Request">
+            </form>
+        </td>
     </tr>
 
     @endforeach

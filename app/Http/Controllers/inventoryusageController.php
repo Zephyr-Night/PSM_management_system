@@ -99,6 +99,9 @@ class inventoryusageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleterequest = inventoryUsage::findOrFail($id);
+        $deleterequest->delete();
+
+        return redirect('inventory');
     }
 }

@@ -22,6 +22,10 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
+Route::get('/lecturedashboard', function () {
+    return view('lecturedashboard');
+});
+
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

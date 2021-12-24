@@ -21,6 +21,7 @@ class CreateLectureSeeder extends Seeder
                'lecturePhone'=>'011-12345678',
                'lecture_Skill'=>'programming',
                'skill_Level'=> 'high',
+               'user_id' => '3',
             ],
             [
                 'lectureName'=>'Marie',
