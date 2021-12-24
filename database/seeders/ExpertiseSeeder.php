@@ -14,6 +14,18 @@ class ExpertiseSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $expertise = [
+            [
+               'lectureID'=>'1',
+               'expertiseName' => 'example',
+               'expertiseLevel' => 'High'
+            ]
+        ];
+    
+
+        foreach ($expertise as $key => $value) {
+            ExpertiseModel::create($value);
+
+        }
     }
 }
