@@ -26,6 +26,7 @@
                                 <th>end date</th>
                                 <th>reason</th>
                                 <th>status</th>
+                                <th>Cancel request</th>
                             </tr>
                             @foreach ($inventorylist as $inventoryindex)
                             <tr>

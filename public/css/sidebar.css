@@ -8,7 +8,7 @@
       margin: 0;
       padding: 0;
       width: 200px;
-      background-color: #f1f1f1;
+      background-color: #2e2e2e;
       position: fixed;
       height: 100%;
       overflow: auto;
@@ -16,19 +16,19 @@
 
     .sidebar a {
       display: block;
-      color: black;
+      color: white;
       padding: 16px;
       text-decoration: none;
     }
 
     .sidebar a.active {
-      background-color: #04AA6D;
-      color: white;
+      background-color: #05cbee;
+      color: rgb(0, 0, 0);
     }
 
     .sidebar a:hover:not(.active) {
-      background-color: #555;
-      color: white;
+      background-color: rgb(236, 236, 236);
+      color: rgb(0, 0, 0);
     }
 
     div.content {
