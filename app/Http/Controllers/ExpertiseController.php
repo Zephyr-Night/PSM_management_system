@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\ExpertiseModel;
 use Illuminate\Http\Request;
+use App\Models\studentprofileModel;
+use Illuminate\Contracts\Session\Session;
+use App\Models\lectureprofileModel;
 
 class ExpertiseController extends Controller
 {
@@ -15,6 +18,8 @@ class ExpertiseController extends Controller
     public function index()
     {
         //
+        $getsession = session()->get('userprimarykey');
+
     }
 
     /**

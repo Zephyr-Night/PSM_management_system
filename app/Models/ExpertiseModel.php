@@ -19,8 +19,8 @@ class ExpertiseModel extends Model
 
     public $timestamps = false;
 
-    public function expertiseFK()
+    public function lectureFK()
     {
-        return $this->hasOne(lectureprofileModel::Class,'itemId','itemId');
+        return $this->belongsTo('App\Models\lectureprofileModel','lectureId','lectureId');
     }
 }
