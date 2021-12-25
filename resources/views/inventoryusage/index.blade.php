@@ -4,9 +4,9 @@
 
 @include('layouts.sidebar')
  <main class="py-4">  {{--create spacing --}}
-    <div class="container">
+    <div class="content">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Request Inventory</div>
                     <div class="card-body">
@@ -16,9 +16,9 @@
                             </div>
                         @endif
                         {{-- {{Auth::user()->userID}} --}}
-                        <br><br>
-                        <button type="button" onclick="window.location='{{route('inventory.create')}}'" class="btn btn-primary">Add request</button>
 
+                        <button type="button" onclick="window.location='{{route('inventory.create')}}'" class="btn btn-primary">Add request</button>
+                        <br><br>
                         <table class="table">
                             <tr>
                                 <th>inventory name</th>

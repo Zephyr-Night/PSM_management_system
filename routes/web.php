@@ -20,16 +20,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return view('test');
+Route::get('/studentdashboard', function () {
+    return view('studentdashboard');
 });
-Route::get('/lecturedashboard', function () {
-    return view('lecturedashboard');
-});
+// Route::get('/lecturedashboard', function () {
+//     return view('lecturedashboard');
+// });
 
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/lecturedashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('lecturedashboards');
 
 //inventory usage
 Route::resource('/inventory', inventoryusageController::class);

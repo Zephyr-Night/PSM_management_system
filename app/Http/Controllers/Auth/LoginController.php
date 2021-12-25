@@ -34,10 +34,10 @@ class LoginController extends Controller
         $request->session()->put(['islecture'=>$checkiflecture]);
 
     if ($user->islecture == true ) {// do your magic here
-        return redirect('/home');
+        return view('lecturedashboard');
     }
 
-    return redirect('/test');
+    return redirect('/studentdashboard');
     }
 
 

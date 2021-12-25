@@ -23,6 +23,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //if user (lecture/student) suddently exit or close browser
+        //the system check type of user by using session get() method
+
+
+        $getsessionisLecture = session()->get('islecture');
+
+        if ($getsessionisLecture == true ) {// do your magic here
+            return view('lecturedashboard');
+        }
+        else
+        {
+            return view('studentdashboard');
+        }
     }
 }
