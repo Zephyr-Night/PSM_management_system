@@ -33,7 +33,7 @@
                                 <td>{{$inventoryindex->Startdate}}</td>
                                 <td>{{$inventoryindex->Enddate}}</td>
                                 <td>{{$inventoryindex->reason}}</td>
-                                <td>{{$inventoryindex->status}}</td>
+                                <td >{{$inventoryindex->status}}</td>
                                 <td>
                                     <form action="{{ route('inventory.destroy',$inventoryindex->id) }}" method="post">
                                     @csrf

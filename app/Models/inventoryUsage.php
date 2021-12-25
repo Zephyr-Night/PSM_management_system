@@ -14,8 +14,9 @@ class inventoryUsage extends Model
         'Startdate',
         'Enddate',
         'reason',
-        'status',
+        'status'
     ];
+    // protected $guarded = ['status'];
     public $timestamps = false;
 
     //intentoryitem (itemid) is belong to model inventoryitemmodel

@@ -53,7 +53,7 @@ class inventoryusageController extends Controller
         $inventoryusage = $request->all();
 
         //create object of class model inventoryusage
-        $addinventory = new inventoryUsage($inventoryusage);
+        $addinventory = new inventoryUsage($inventoryusage + ['status'=>'pending']);
 
         //save data in function studentprofileModel called inventoryusage()
         $user->inventoryusage()->save($addinventory);
