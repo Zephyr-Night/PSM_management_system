@@ -16,12 +16,17 @@ class inventoryUsage extends Model
         'reason',
         'status'
     ];
-    // protected $guarded = ['status'];
+     protected $guarded = ['studentId'];
     public $timestamps = false;
 
     //intentoryitem (itemid) is belong to model inventoryitemmodel
     public function inventoryitem()
     {
         return $this->belongsTo('App\Models\inventoryitemModel','itemId','itemId');
+    }
+      //studentprofile (studentId) is belong to model studentprofileModel
+    public function studentprofile()
+    {
+        return $this->belongsTo('App\Models\studentprofileModel','studentId','studentId');
     }
 }

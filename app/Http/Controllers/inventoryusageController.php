@@ -30,6 +30,14 @@ class inventoryusageController extends Controller
        return view('inventoryusage.index',compact(['inventorylist']));
     }
 
+    public function listRequestLecture()
+    {
+        $listAll = inventoryUsage::Select()->with('studentprofile')->get();
+        return view('inventoryusage.listrequest',compact('listAll'));
+
+    }
+
+
 
     public function create()
     {
@@ -61,6 +69,13 @@ class inventoryusageController extends Controller
 
         return redirect('inventory');
     }
+
+
+
+
+
+
+
 
 
     public function show($id)

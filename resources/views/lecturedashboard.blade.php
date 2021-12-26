@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.adminsidebar')
 <br>
 <div class="container">
     <div class="row justify-content-center">
@@ -23,3 +24,4 @@
     </div>
 </div>
 @endsection
+<link rel="stylesheet" href="/css/sidebar.css">
