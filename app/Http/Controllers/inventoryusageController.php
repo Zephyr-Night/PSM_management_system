@@ -103,7 +103,14 @@ class inventoryusageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $postupdate = inventoryUsage::findOrFail($id);
+
+        //retieve all input data
+        $inventoryusageupdatestatus = $request->all();
+
+        $postupdate->update($request->all());
+
+        return redirect('posts');
     }
 
     /**

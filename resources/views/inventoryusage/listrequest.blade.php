@@ -38,8 +38,9 @@
                                 <td>
                                     <form action="{{ route('inventory.update',$inventoryindex->id) }}" method="post">
                                     @csrf
-                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_method" value="PUT">
 
+                                    <input type="submit" value="Approve Request" class="btn btn-success">
                                     <input type="submit" value="Reject Request" class="btn btn-danger">
                                     </form>
                                 </td>
