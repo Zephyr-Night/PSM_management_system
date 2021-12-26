@@ -48,7 +48,7 @@ class ExpertiseController extends Controller
      */
     public function create()
     {
-        //
+        return "sfsfsf";
     }
 
     /**
@@ -59,7 +59,23 @@ class ExpertiseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //retrive user Primary Key data by using session (get from LoginController)
+        $getsession = $request->session()->get('userprimarykey');
+
+        $user = new lectureprofileModel();
+
+        //find the first user_id data (foreign key) in db (table: studentprofile)
+        $user = $user::where('user_id',$getsession)->firstOrFail();
+
+        //retieve all input data
+        $expertiseData = $request->all();
+
+        //create object of class model expertise
+        $addExpertise = new ExpertiseModel($expertiseData);
+
+        $user->expertiseFK()->save($addExpertise);
+
+        return redirect('expertise');
     }
 
     /**
