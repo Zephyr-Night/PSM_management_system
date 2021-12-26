@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\ExpertiseModel;
 use Illuminate\Http\Request;
+use App\Models\studentprofileModel;
+use Illuminate\Contracts\Session\Session;
+use App\Models\lectureprofileModel;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class ExpertiseController extends Controller
 {
@@ -15,6 +20,25 @@ class ExpertiseController extends Controller
     public function index()
     {
         //
+        // $getsession = session()->get('userprimarykey');
+
+        // $isLecture = DB::table('user')->where('userID',$getsession)->value('islecture');
+
+        // switch($isLecture){
+        //     case 0:
+        //         $user = new studentprofileModel();
+        //         $user = $user::where('user_id',$getsession)->firstOrFail();
+        //         //
+        //         break;
+        //     case 1:
+        //         $user = new lectureprofileModel();
+        //         $user = $user::where('user_id',$getsession)->firstOrFail();
+        //         //
+        //         break;
+        // }
+        $lectureID = 1;
+        $lectureExpertise = DB::table('expertise')->join('lectureprofile', 'expertise.lectureId', '=','lectureprofile.lectureId')->where('expertise.lectureId', $lectureID)->select('expertise.*','lectureprofile.*')->get();
+        return view('expertise.index', compact(['lectureExpertise']));
     }
 
     /**
@@ -78,8 +102,11 @@ class ExpertiseController extends Controller
      * @param  \App\Models\ExpertiseModel  $expertiseModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ExpertiseModel $expertiseModel)
+    public function destroy($expertiseID)
     {
-        //
+        $delete = ExpertiseModel::findorFail($id);
+        $delete->delete();
+
+        return redirect('expertise');
     }
 }
