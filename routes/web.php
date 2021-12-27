@@ -34,4 +34,6 @@ Route::get('/lecturedashboard', [App\Http\Controllers\HomeController::class, 'in
 //inventory usage
 Route::resource('/inventory', inventoryusageController::class);
 
+Route::get('/listRequestLecture', [inventoryusageController::class, 'listRequestLecture'])->name('listRequestLecture');
+
 Route::resource('/expertise', ExpertiseController::class);

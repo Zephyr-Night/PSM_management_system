@@ -30,6 +30,14 @@ class inventoryusageController extends Controller
        return view('inventoryusage.index',compact(['inventorylist']));
     }
 
+    public function listRequestLecture()
+    {
+        $listAll = inventoryUsage::Select()->with('studentprofile')->get();
+        return view('inventoryusage.listrequest',compact('listAll'));
+
+    }
+
+
 
     public function create()
     {
@@ -63,6 +71,13 @@ class inventoryusageController extends Controller
     }
 
 
+
+
+
+
+
+
+
     public function show($id)
     {
         //
@@ -88,7 +103,14 @@ class inventoryusageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $postupdate = inventoryUsage::findOrFail($id);
+
+        //retieve all input data
+        $inventoryusageupdatestatus = $request->all();
+
+        $postupdate->update($request->all());
+
+        return redirect('posts');
     }
 
     /**
