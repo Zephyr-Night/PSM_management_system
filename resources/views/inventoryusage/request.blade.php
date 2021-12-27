@@ -16,6 +16,8 @@
                             </div>
                         @endif
                         {{-- {{Auth::user()->userID}} --}}
+                        <button type="button" onclick="window.location='{{route('inventory.index')}}'" class="btn btn-primary">Back</button>
+                        <br><br>
                         <form method="post" action="{{ route('inventory.store') }}">
                             @csrf
                             <label for="itemId">Select a inventory:</label>

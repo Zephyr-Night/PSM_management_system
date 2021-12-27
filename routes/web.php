@@ -20,6 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
 Route::get('/studentdashboard', function () {
     return view('studentdashboard');
 });
@@ -35,6 +38,9 @@ Route::get('/lecturedashboard', [App\Http\Controllers\HomeController::class, 'in
 Route::resource('/inventory', inventoryusageController::class);
 Route::get('/listRequestLecture', [inventoryusageController::class, 'listRequestLecture'])->name('listRequestLecture');
 Route::get('/studentApprovelist', [inventoryusageController::class, 'studentApprovelist'])->name('studentApprovelist');
+Route::get('/listApprovetLecture', [inventoryusageController::class, 'listApprovetLecture'])->name('listApprovetLecture');
+
+
 
 Route::resource('/expertise', ExpertiseController::class);
 

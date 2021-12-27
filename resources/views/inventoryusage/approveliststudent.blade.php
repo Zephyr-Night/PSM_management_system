@@ -17,7 +17,7 @@
                         @endif
                         {{-- {{Auth::user()->userID}} --}}
 
-
+                        <button type="button" onclick="window.location='{{route('inventory.index')}}'" class="btn btn-primary">Back</button>
                         <br><br>
                         <table class="table">
                             <tr>
@@ -25,7 +25,6 @@
                                 <th>start date</th>
                                 <th>end date</th>
                                 <th>reason</th>
-                                <th>status</th>
                                 <th>Lecture Name</th>
                             </tr>
                             @foreach ($listAllapprove as $inventoryindex)
@@ -34,7 +33,6 @@
                                 <td>{{$inventoryindex->Startdate}}</td>
                                 <td>{{$inventoryindex->Enddate}}</td>
                                 <td>{{$inventoryindex->reason}}</td>
-                                <td >{{$inventoryindex->status}}</td>
                                 <td>{{$inventoryindex->lectureprofile->lectureName}}</td>
                             </tr>
 

@@ -90,6 +90,15 @@ class inventoryusageController extends Controller
 
     }
 
+    //display approve list  for lecture
+    public function listApprovetLecture()
+    {
+        $listAllApprove = inventoryUsage::Select()->where('status','LIKE','Approve')->with('studentprofile')->get();
+
+        return view('inventoryusage.lectureapprovelist',compact('listAllApprove'));
+
+    }
+
 
     /**
      * Update the specified resource in storage.

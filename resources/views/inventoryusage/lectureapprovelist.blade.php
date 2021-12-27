@@ -15,9 +15,8 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        {{-- {{Auth::user()->userID}} --}}
 
-                        <button type="button" onclick="window.location='{{route('listApprovetLecture')}}'" class="btn btn-primary">Approval List</button>
+                        <button type="button" onclick="window.location='{{route('listRequestLecture')}}'" class="btn btn-primary">Back</button>
                         <br><br>
                         <table class="table">
                             <tr>
@@ -26,27 +25,15 @@
                                 <th>start date</th>
                                 <th>end date</th>
                                 <th>reason</th>
-                                <th colspan="2" style="text-align:center">status</th>
+
                             </tr>
-                            @foreach ($listAll as $inventoryindex)
+                            @foreach ($listAllApprove as $inventoryindex)
                             <tr>
                                 <td>{{$inventoryindex->studentprofile->studentName}}</td>
                                 <td>{{$inventoryindex->inventoryitem->inventoryname}}</td>
                                 <td>{{$inventoryindex->Startdate}}</td>
                                 <td>{{$inventoryindex->Enddate}}</td>
                                 <td>{{$inventoryindex->reason}}</td>
-                                <td>
-                                    <form action="{{ route('inventory.update',$inventoryindex->id) }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="_method" value="PUT">
-
-                                    <input type="submit" value="Approve Request" class="btn btn-success" name="submitbutton">
-                                    <BR>
-
-                                    <input type="submit" value="Reject Request" class="btn btn-danger" name="submitbutton" onsubmit="return confirm('Are you sure you want to cancel this request?');">
-                                    </form>
-                                </td>
-
                             </tr>
 
                             @endforeach

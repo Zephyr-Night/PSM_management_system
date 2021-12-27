@@ -36,8 +36,11 @@ class LoginController extends Controller
     if ($user->islecture == true ) {// do your magic here
         return view('lecturedashboard');
     }
+    else
+    {
+        return view('studentdashboard');
+    }
 
-    return redirect('/studentdashboard');
     }
 
 
