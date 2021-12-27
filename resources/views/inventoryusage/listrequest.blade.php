@@ -26,7 +26,7 @@
                                 <th>start date</th>
                                 <th>end date</th>
                                 <th>reason</th>
-                                <th colspan="2" style="text-align:center">Cancel request</th>
+                                <th colspan="2" style="text-align:center">status</th>
                             </tr>
                             @foreach ($listAll as $inventoryindex)
                             <tr>
@@ -40,19 +40,13 @@
                                     @csrf
                                     <input type="hidden" name="_method" value="PUT">
 
-                                    <input type="submit" value="Approve Request" class="btn btn-success">
-                                    <input type="submit" value="Reject Request" class="btn btn-danger">
+                                    <input type="submit" value="Approve Request" class="btn btn-success" name="submitbutton">
+                                    <BR>
+
+                                    <input type="submit" value="Reject Request" class="btn btn-danger" name="submitbutton" onsubmit="return confirm('Are you sure you want to cancel this request?');">
                                     </form>
                                 </td>
-                                <td>
 
-                                <form action="{{ route('inventory.destroy',$inventoryindex->id) }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="_method" value="DELETE">
-
-                                    <input type="submit" value="Approve Request" class="btn btn-success">
-                                </form>
-                                </td>
                             </tr>
 
                             @endforeach
@@ -68,3 +62,9 @@
 
 @endsection
 <link rel="stylesheet" href="/css/sidebar.css">
+
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif

@@ -34,7 +34,7 @@
                             <label for="reason" class="form-label">Reason:</label>
                             <input type="text" name="reason" id="reason" class="form-control"><br/>
 
-                            <input type="submit" name="submit" value="request" class="btn btn-success">
+                            <input type="submit" name="submit" value="Submit Request" class="btn btn-success">
                         </form>
                     </div>
                 </div>

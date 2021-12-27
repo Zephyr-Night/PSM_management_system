@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\inventoryitemModel;
 use App\Models\inventoryUsage;
 use App\Models\studentprofileModel;
+use App\Models\lectureprofileModel;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class inventoryusageController extends Controller
 {
-
     public function index()
     {
         //retrive user Primary Key data by using session (get from LoginController)
@@ -25,26 +25,20 @@ class inventoryusageController extends Controller
         //get all inventoryUsage primary key for specific user
         //use 'with()' in order to access data from other table by using foreign key (itemId)
         //go to inventoryUsage function inventoryitem()
-        $inventorylist = inventoryUsage::Select()->where('studentId',$user->studentId)->with('inventoryitem')->get();
+        $inventorylist = inventoryUsage::Select()->where('studentId',$user->studentId)->where('status','LIKE','pending')->with('inventoryitem')->get();
 
        return view('inventoryusage.index',compact(['inventorylist']));
     }
 
-    public function listRequestLecture()
-    {
-        $listAll = inventoryUsage::Select()->with('studentprofile')->get();
-        return view('inventoryusage.listrequest',compact('listAll'));
-
-    }
-
-
 
     public function create()
     {
-        //get list inventoryname and id
-        $inventoryItem = inventoryitemModel::all(['inventoryname','itemId']);
-        return view('inventoryusage.request',compact(['inventoryItem',]));
+        //get list inventoryname and id if value not 0
+        $inventoryItem = inventoryitemModel::Select()->where('quantity','!=',0)->get();
+
+        return view('inventoryusage.request',compact(['inventoryItem']));
     }
+
 
     public function store(Request $request)
     {
@@ -70,29 +64,32 @@ class inventoryusageController extends Controller
         return redirect('inventory');
     }
 
-
-
-
-
-
-
-
-
-    public function show($id)
+    public function destroy($id)
     {
-        //
+        $deleterequest = inventoryUsage::findOrFail($id);
+        $deleterequest->delete();
+
+        return redirect('inventory');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    //display list of data that have value status == Approve only
+    public function studentApprovelist()
     {
-        //
+        $listAllapprove = inventoryUsage::Select()->where('status','like','Approve')->with('studentprofile')->with('lectureprofile')->get();
+
+        return view('inventoryusage.approveliststudent',compact('listAllapprove'));
+
     }
+
+    //display index admin dashboard
+    public function listRequestLecture()
+    {
+        $listAll = inventoryUsage::Select()->where('status','LIKE','pending')->with('studentprofile')->get();
+
+        return view('inventoryusage.listrequest',compact('listAll'));
+
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -103,27 +100,65 @@ class inventoryusageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $postupdate = inventoryUsage::findOrFail($id);
+        $postupdate = inventoryUsage::whereid($id)->first();
 
-        //retieve all input data
-        $inventoryusageupdatestatus = $request->all();
+        //retrive user Primary Key data by using session (get from LoginController)
+        $getsession = $request->session()->get('userprimarykey');
 
-        $postupdate->update($request->all());
+        //create object of class model lectureprofileModel
+        $user = new lectureprofileModel();
 
-        return redirect('posts');
+       //find the first user_id data (foreign key) in db (table: lectureprofile)
+       $user = $user::where('user_id',$getsession)->firstOrFail();
+
+
+
+        switch($request->submitbutton)
+        {
+            case 'Approve Request':
+
+            $postupdate->status = "Approve";
+
+           $user->inventoryusage()->save($postupdate);
+
+
+            //get quantity value from inventoryitemModel model
+            $valueInventoryitem = $postupdate->inventoryitem->quantity;
+
+            //  latest quantity value  = quantity value -1
+            $latestvalue = $valueInventoryitem - 1;
+
+            //get itemId primary key
+            $foreignkeyItemId = $postupdate->itemId;
+
+            //find itemId in db
+            $updateinventoryItem = inventoryitemModel::where('itemId',$foreignkeyItemId)->first();
+
+            //update latest quantity value
+            $updateinventoryItem->quantity = $latestvalue;
+
+            //update data
+            $updateinventoryItem->save();
+
+            // return redirect('listRequestLecture')->with('message', 'The success message!');
+            return redirect('listRequestLecture');
+
+            break;
+            case 'Reject Request':
+
+            $postupdate->status = "Reject";
+
+            $user->inventoryusage()->save($postupdate);
+
+            return redirect('listRequestLecture');
+
+            break;
+        }
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $deleterequest = inventoryUsage::findOrFail($id);
-        $deleterequest->delete();
 
-        return redirect('inventory');
-    }
+
+
+
 }

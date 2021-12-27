@@ -29,4 +29,8 @@ class inventoryUsage extends Model
     {
         return $this->belongsTo('App\Models\studentprofileModel','studentId','studentId');
     }
+    public function lectureprofile()
+    {
+        return $this->belongsTo('App\Models\lectureprofileModel','lectureId','lectureId');
+    }
 }

@@ -18,11 +18,6 @@
                         {{-- {{Auth::user()->userID}} --}}
 
 
-                        <div class="d-flex justify-content-between">
-                            <button type="button" onclick="window.location='{{route('inventory.create')}}'" class="btn btn-primary">Add request</button>
-                            <button type="button" onclick="window.location='{{route('studentApprovelist')}}'" class="btn btn-info">Approve List</button>
-                        </div>
-
                         <br><br>
                         <table class="table">
                             <tr>
@@ -31,23 +26,16 @@
                                 <th>end date</th>
                                 <th>reason</th>
                                 <th>status</th>
-                                <th>Cancel request</th>
+                                <th>Lecture Name</th>
                             </tr>
-                            @foreach ($inventorylist as $inventoryindex)
+                            @foreach ($listAllapprove as $inventoryindex)
                             <tr>
                                 <td>{{$inventoryindex->inventoryitem->inventoryname}}</td>
                                 <td>{{$inventoryindex->Startdate}}</td>
                                 <td>{{$inventoryindex->Enddate}}</td>
                                 <td>{{$inventoryindex->reason}}</td>
                                 <td >{{$inventoryindex->status}}</td>
-                                <td>
-                                    <form action="{{ route('inventory.destroy',$inventoryindex->id) }}" onsubmit="return confirm('Are you sure you want to cancel this request?');" method="post">
-                                    @csrf
-                                    <input type="hidden" name="_method" value="DELETE">
-
-                                    <input type="submit" value="Cancel Request" class="btn btn-danger">
-                                    </form>
-                                </td>
+                                <td>{{$inventoryindex->lectureprofile->lectureName}}</td>
                             </tr>
 
                             @endforeach

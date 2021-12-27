@@ -9,15 +9,17 @@ class inventoryitemModel extends Model
 {
     use HasFactory;
     protected $table = 'inventory_item';
+    protected $primaryKey = 'itemId';
 
     protected $fillable= [
-        'itemId',
+        'inventoryname',
+        'quantity',
     ];
 
-    protected $guard= [
-    'inventoryname',
-    'quantity',
-    ];
+    // protected $guard= [
+    // 'inventoryname',
+    // 'quantity',
+    // ];
 
 
     public $timestamps = false;
