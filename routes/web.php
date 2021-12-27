@@ -37,3 +37,7 @@ Route::get('/listRequestLecture', [inventoryusageController::class, 'listRequest
 Route::get('/studentApprovelist', [inventoryusageController::class, 'studentApprovelist'])->name('studentApprovelist');
 
 Route::resource('/expertise', ExpertiseController::class);
+
+Route::get('/expertiseEdit', function () {
+    return view('expertise.edit');
+});

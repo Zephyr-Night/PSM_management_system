@@ -26,7 +26,7 @@ class lectureprofileModel extends Model
     }
 
     public function expertiseFK(){
-        return $this -> hasMany('App\Models\ExpertiseModel');
+        return $this -> hasMany('App\Models\ExpertiseModel', 'lectureId', 'lectureId');
     }
 
 }
