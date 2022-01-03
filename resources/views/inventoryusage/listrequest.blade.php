@@ -41,8 +41,7 @@
                                     <input type="hidden" name="_method" value="PUT">
 
                                     <input type="submit" value="Approve Request" class="btn btn-success" name="submitbutton">
-                                    <BR>
-
+                                    <br><br>
                                     <input type="submit" value="Reject Request" class="btn btn-danger" name="submitbutton" onsubmit="return confirm('Are you sure you want to cancel this request?');">
                                     </form>
                                 </td>
