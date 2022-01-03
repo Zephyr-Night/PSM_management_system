@@ -48,7 +48,8 @@ class ExpertiseController extends Controller
      */
     public function create()
     {
-        return "sfsfsf";
+      //  return "sfsfsf";
+        return view('expertise.edit');
     }
 
     /**
@@ -120,8 +121,8 @@ class ExpertiseController extends Controller
      */
     public function destroy($expertiseID)
     {
-        $delete = ExpertiseModel::findorFail($id);
-        $delete->delete();
+        // $delete = ExpertiseModel::findorFail($id);
+        // $delete->delete();
 
         return redirect('expertise');
     }

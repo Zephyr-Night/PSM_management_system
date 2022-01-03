@@ -1,9 +1,8 @@
-@@ -0,0 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
 
-{{-- @include('layouts.sidebar') --}}
+@include('layouts.adminsidebar')
 <main class="py-4">  {{--create spacing --}}
     <div class="content">
         <div class="row justify-content-center">

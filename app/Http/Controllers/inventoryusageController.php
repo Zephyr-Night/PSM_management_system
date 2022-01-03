@@ -64,6 +64,8 @@ class inventoryusageController extends Controller
         return redirect('inventory');
     }
 
+
+    //cancel request
     public function destroy($id)
     {
         $deleterequest = inventoryUsage::findOrFail($id);
