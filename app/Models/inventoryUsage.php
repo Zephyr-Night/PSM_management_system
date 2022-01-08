@@ -33,4 +33,5 @@ class inventoryUsage extends Model
     {
         return $this->belongsTo('App\Models\lectureprofileModel','lectureId','lectureId');
     }
+
 }
