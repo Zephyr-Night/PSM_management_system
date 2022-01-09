@@ -15,7 +15,16 @@ class CreateApprovalTable extends Migration
     {
         Schema::create('_approval', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('studentId')->nullable();
+            $table->unsignedBigInteger('lectureId')->nullable();
+            $table->string('status');
+            $table->string('reasons');
+
+
+            //foreign key
+            $table->foreign('studentId')->references('studentId')->on('studentprofile');
+            $table->foreign('lectureId')->references('lectureId')->on('lectureprofile');
+
         });
     }
 
