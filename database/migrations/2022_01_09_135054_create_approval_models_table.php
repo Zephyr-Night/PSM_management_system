@@ -15,7 +15,14 @@ class CreateApprovalModelsTable extends Migration
     {
         Schema::create('approval_models', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('approvalStatus');
+            $table->string('approvalReasons');
+
+
+            //foreign key
+            $table->foreign('studentId')->references('studentId')->on('studentprofile');
+            $table->foreign('lectureId')->references('lectureId')->on('lectureprofile');
+
         });
     }
 
