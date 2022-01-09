@@ -13,14 +13,16 @@ class CreateLogbookTable extends Migration
      */
     public function up()
     {
-        Schema::table('logbook', function (Blueprint $table) {
+        Schema::create('logbook', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('studentId')->nullable();
+            $table->unsignedBigInteger('lectureId')->nullable();
             $table->date('meetingDate');
             $table->timestamp('startTime');
             $table->timestamp('endTime');
-            $table->string('currentProgress');
-            $table->string('discDetail');
-            $table->string('actPlan');
+            $table->text('currentProgress');
+            $table->text('discDetail');
+            $table->text('actPlan');
 
             //foreign key
             $table->foreign('studentId')->references('studentId')->on('studentprofile');
