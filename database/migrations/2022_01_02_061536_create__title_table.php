@@ -15,8 +15,15 @@ class CreateTitleTable extends Migration
     {
         Schema::create('_title', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-        });
+            $table->unsignedBigInteger('lectureId')->nullable();
+            $table->unsignedBigInteger('studentId')->nullable();
+            $table->string('field');
+            $table->string('project_title');
+            $table->string('project_description');
+            
+              //foreign key
+              $table->foreign('lectureId')->references('lectureId')->on('lectureprofile');
+            });
     }
 
     /**
@@ -27,5 +34,6 @@ class CreateTitleTable extends Migration
     public function down()
     {
         Schema::dropIfExists('_title');
+        //
     }
 }
