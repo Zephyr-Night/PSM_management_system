@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\inventoryusageController;
 use App\Http\Controllers\ExpertiseController;
+use App\Http\Controllers\ProposalController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,3 +48,6 @@ Route::resource('/expertise', ExpertiseController::class);
 Route::get('/expertiseEdit', function () {
     return view('expertise.edit');
 });
+
+//Proposal
+Route::resource('/proposal', ProposalController::class);
