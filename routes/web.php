@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\inventoryusageController;
-use App\Http\Controllers\TitleController;
 use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\ProposalController;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +51,3 @@ Route::get('/expertiseEdit', function () {
 
 //Proposal
 Route::resource('/proposal', ProposalController::class);
-
-//title
-Route::resource('/title', TitleController::class);
-Route::get('/listtitlestudent', [TitleController::class, 'listtitlestudent'])->name('listApprovetLecture');

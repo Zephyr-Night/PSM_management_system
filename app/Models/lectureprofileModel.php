@@ -20,8 +20,6 @@ class lectureprofileModel extends Model
     protected $guard = ['user_id'];
     public $timestamps = false;
 
-
-
     public function inventoryusage()
     {
         return $this->hasMany('App\Models\inventoryUsage','lectureId','lectureId');
@@ -29,11 +27,6 @@ class lectureprofileModel extends Model
 
     public function expertiseFK(){
         return $this -> hasMany('App\Models\ExpertiseModel', 'lectureId', 'lectureId');
-    }
-
-    public function title()
-    {
-        return $this->hasMany('App\Models\TitleModel','lectureId','lectureId');
     }
 
 }
