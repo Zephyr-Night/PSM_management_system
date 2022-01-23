@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\inventoryitemModel;
-use App\Models\inventoryUsage;
+use App\Models\inventoryUsageModel;
 use App\Models\studentprofileModel;
 use App\Models\lectureprofileModel;
 use Illuminate\Contracts\Session\Session;
@@ -13,7 +13,7 @@ class inventoryusageController extends Controller
 {
     public function index()
     {
-        $result = new inventoryUsage();
+        $result = new inventoryUsageModel();
 
         $inventorylist = $result->indexmodel();
 
@@ -24,7 +24,7 @@ class inventoryusageController extends Controller
     public function create()
     {
 
-        $result = new inventoryUsage();
+        $result = new inventoryUsageModel();
 
         $inventoryItem = $result->create();
 
@@ -34,7 +34,7 @@ class inventoryusageController extends Controller
 
     public function store(Request $request)
     {
-        $result = new inventoryUsage();
+        $result = new inventoryUsageModel();
 
         $data = $request;
 
@@ -47,7 +47,7 @@ class inventoryusageController extends Controller
     //cancel request
     public function destroy($id)
     {
-        $result = new inventoryUsage();
+        $result = new inventoryUsageModel();
 
         $data = $id;
 
@@ -57,21 +57,11 @@ class inventoryusageController extends Controller
         return redirect('inventory');
     }
 
-    //display list of data that have value status == Approve only
-    public function studentApprovelist()
-    {
-        $result = new inventoryUsage();
-
-        $listAllapprove = $result->studentApprovelist();
-
-        return view('inventoryusage.approveliststudent',compact('listAllapprove'));
-
-    }
 
     //display index admin dashboard
     public function listRequestLecture()
     {
-        $result = new inventoryUsage();
+        $result = new inventoryUsageModel();
 
         $listAll = $result->listRequestLecture();
 
@@ -81,7 +71,7 @@ class inventoryusageController extends Controller
     //display approve list  for lecture
     public function listApprovetLecture()
     {
-        $result = new inventoryUsage();
+        $result = new inventoryUsageModel();
 
         $listAllApprove = $result->listApprovetLecture();
 
@@ -91,7 +81,7 @@ class inventoryusageController extends Controller
 
     public function update(Request $request, $id)
     {
-        $result = new inventoryUsage();
+        $result = new inventoryUsageModel();
 
         $data = $request;
         $dataid = $id;
@@ -102,7 +92,14 @@ class inventoryusageController extends Controller
         return redirect('listRequestLecture');
     }
 
+    public function show($id)
+    {
+        $result = new inventoryUsageModel();
 
+        $detailinventory = $result->infoRequest($id);
+
+        return view('inventoryusage.detailsrequest',compact('detailinventory'));
+    }
 
 
 

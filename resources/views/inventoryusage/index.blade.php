@@ -17,34 +17,30 @@
                         @endif
                         {{-- {{Auth::user()->userID}} --}}
 
-
                         <div class="d-flex justify-content-between">
                             <button type="button" onclick="window.location='{{route('inventory.create')}}'" class="btn btn-primary">Add request</button>
-                            <button type="button" onclick="window.location='{{route('studentApprovelist')}}'" class="btn btn-info">Approve List</button>
                         </div>
 
                         <br><br>
                         <table class="table">
                             <tr>
+                                <th>No</th>
                                 <th>inventory name</th>
-                                <th>start date</th>
-                                <th>end date</th>
-                                <th>reason</th>
                                 <th>status</th>
-                                <th>Cancel request</th>
+                                <th>info</th>
+                                <th>Reject Request</th>
+
                             </tr>
                             @foreach ($inventorylist as $inventoryindex)
                             <tr>
+                                <td scope = "row">{{$loop->iteration}}</td>
                                 <td>{{$inventoryindex->inventoryitem->inventoryname}}</td>
-                                <td>{{$inventoryindex->Startdate}}</td>
-                                <td>{{$inventoryindex->Enddate}}</td>
-                                <td>{{$inventoryindex->reason}}</td>
                                 <td >{{$inventoryindex->status}}</td>
+                                <td>
+                                    <button type="button" onclick="window.location='{{route('inventory.show',$inventoryindex->id)}}'" class="btn btn-info">View</button>
+                                </td>
+                                @if ($inventoryindex->status == "pending")
 
-                                @if ($inventoryindex->status = "pending")
-
-
-                                @endif
                                 <td>
                                     <form action="{{ route('inventory.destroy',$inventoryindex->id) }}" onsubmit="return confirm('Are you sure you want to cancel this request?');" method="post">
                                     @csrf
@@ -53,6 +49,10 @@
                                     <input type="submit" value="Cancel Request" class="btn btn-danger">
                                     </form>
                                 </td>
+                                @else
+                                    <td></td>
+                                @endif
+
                             </tr>
 
                             @endforeach

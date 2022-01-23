@@ -6,7 +6,7 @@ use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class inventoryUsage extends Model
+class inventoryUsageModel extends Model
 {
     use HasFactory;
     protected $table = 'inventoryusage';
@@ -51,7 +51,7 @@ class inventoryUsage extends Model
             //use 'with()' in order to access data from other table by using foreign key (itemId)
             //go to inventoryUsage function inventoryitem()
             //->where('status','LIKE','pending')->
-            $inventorylist = inventoryUsage::Select()->where('studentId',$user->studentId)->with('inventoryitem')->get();
+            $inventorylist = inventoryUsageModel::Select()->where('studentId',$user->studentId)->with('inventoryitem')->with('lectureprofile')->get();
 
             return $inventorylist;
     }
@@ -82,7 +82,7 @@ class inventoryUsage extends Model
                 $inventoryusage = $data->all();
 
                 //create object of class model inventoryusage
-                $addinventory = new inventoryUsage($inventoryusage + ['status'=>'pending']);
+                $addinventory = new inventoryUsageModel($inventoryusage + ['status'=>'pending']);
 
                 //save data in function studentprofileModel called inventoryusage()
                 $user->inventoryusage()->save($addinventory);
@@ -92,22 +92,15 @@ class inventoryUsage extends Model
     //delete
     public function deleteinventory($data)
     {
-        $deleterequest = inventoryUsage::findOrFail($data);
+        $deleterequest = inventoryUsageModel::findOrFail($data);
         $deleterequest->delete();
     }
 
-    //approve list
-    public function studentApprovelist()
-    {
-        $listAllapprove = inventoryUsage::Select()->where('status','like','Approve')->with('studentprofile')->with('lectureprofile')->get();
-
-       return $listAllapprove;
-    }
 
     //display index admin dashboard
     public function listRequestLecture()
     {
-        $listAll = inventoryUsage::Select()->where('status','LIKE','pending')->with('studentprofile')->get();
+        $listAll = inventoryUsageModel::Select()->where('status','LIKE','pending')->with('studentprofile')->get();
 
        return $listAll;
 
@@ -116,7 +109,7 @@ class inventoryUsage extends Model
     //display approve list  for lecture
     public function listApprovetLecture()
     {
-        $listAllApprove = inventoryUsage::Select()->where('status','LIKE','Approve')->with('studentprofile')->get();
+        $listAllApprove = inventoryUsageModel::Select()->where('status','LIKE','Approve')->with('studentprofile')->get();
 
         return $listAllApprove;
 
@@ -125,7 +118,7 @@ class inventoryUsage extends Model
 
     public function updateinventory($data, $dataid)
     {
-        $postupdate = inventoryUsage::whereid($dataid)->first();
+        $postupdate = inventoryUsageModel::whereid($dataid)->first();
 
         //retrive user Primary Key data by using session (get from LoginController)
         $getsession = $data->session()->get('userprimarykey');
@@ -177,4 +170,10 @@ class inventoryUsage extends Model
 
     }
 
+    public function infoRequest($id)
+    {
+        $detailinventory = inventoryUsageModel::where('id',$id)->with('studentprofile')->with('lectureprofile')->with('inventoryitem')->first();
+
+       return $detailinventory;
+    }
 }
