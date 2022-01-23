@@ -50,7 +50,8 @@ class inventoryUsage extends Model
             //get all inventoryUsage primary key for specific user
             //use 'with()' in order to access data from other table by using foreign key (itemId)
             //go to inventoryUsage function inventoryitem()
-            $inventorylist = inventoryUsage::Select()->where('studentId',$user->studentId)->where('status','LIKE','pending')->with('inventoryitem')->get();
+            //->where('status','LIKE','pending')->
+            $inventorylist = inventoryUsage::Select()->where('studentId',$user->studentId)->with('inventoryitem')->get();
 
             return $inventorylist;
     }

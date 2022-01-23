@@ -40,6 +40,11 @@
                                 <td>{{$inventoryindex->Enddate}}</td>
                                 <td>{{$inventoryindex->reason}}</td>
                                 <td >{{$inventoryindex->status}}</td>
+
+                                @if ($inventoryindex->status = "pending")
+
+
+                                @endif
                                 <td>
                                     <form action="{{ route('inventory.destroy',$inventoryindex->id) }}" onsubmit="return confirm('Are you sure you want to cancel this request?');" method="post">
                                     @csrf
