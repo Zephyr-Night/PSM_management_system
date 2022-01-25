@@ -17,28 +17,28 @@ class ExpertiseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-        // $getsession = session()->get('userprimarykey');
+    public function index(){
+        $result = new ExpertiseModel();
 
-        // $isLecture = DB::table('user')->where('userID',$getsession)->value('islecture');
+        $lectureExpertise = $result->indexLecture();
+        return view('expertise.edit', compact(['lectureExpertise']));
+    }
 
-        // switch($isLecture){
-        //     case 0:
-        //         $user = new studentprofileModel();
-        //         $user = $user::where('user_id',$getsession)->firstOrFail();
-        //         //
-        //         break;
-        //     case 1:
-        //         $user = new lectureprofileModel();
-        //         $user = $user::where('user_id',$getsession)->firstOrFail();
-        //         //
-        //         break;
-        // }
-        $lectureID = 1;
-        $lectureExpertise = DB::table('expertise')->join('lectureprofile', 'expertise.lectureId', '=','lectureprofile.lectureId')->where('expertise.lectureId', $lectureID)->select('expertise.*','lectureprofile.*')->get();
-        return view('expertise.index', compact(['lectureExpertise']));
+    public function listLecture(){
+        $result = new ExpertiseModel();
+
+        $listlecture = $result->listlecture();
+
+       return view('expertise.index',compact(['listlecture']));
+    }
+
+
+    public function view($id){
+        $result = new ExpertiseModel();
+        
+        $lectureExpertise = $result->indexView($id);
+        
+        return view('expertise.viewStudent', compact(['lectureExpertise']));
     }
 
     /**
@@ -48,16 +48,9 @@ class ExpertiseController extends Controller
      */
     public function create()
     {
-      //  return "sfsfsf";
         return view('expertise.edit');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //retrive user Primary Key data by using session (get from LoginController)
@@ -85,9 +78,16 @@ class ExpertiseController extends Controller
      * @param  \App\Models\ExpertiseModel  $expertiseModel
      * @return \Illuminate\Http\Response
      */
-    public function show(ExpertiseModel $expertiseModel)
+    public function show($id)
     {
-        //
+        $result = new ExpertiseModel();
+        $info = new ExpertiseModel();
+
+        $lectureExpertise = $result->indexView($id);
+
+        $lectureInfo = $info-> lectureInfo($id);
+
+        return view('expertise.viewLecture', compact(['lectureExpertise', 'lectureInfo']));
     }
 
     /**
@@ -108,9 +108,15 @@ class ExpertiseController extends Controller
      * @param  \App\Models\ExpertiseModel  $expertiseModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ExpertiseModel $expertiseModel)
+    public function update(Request $request, $id)
     {
-        //
+        $result = new ExpertiseModel();
+        $data = $request;
+        $dataid = $id;
+
+        $result->updateExpertise($data,$dataid);
+
+        return redirect('expertise');
     }
 
     /**
@@ -121,8 +127,12 @@ class ExpertiseController extends Controller
      */
     public function destroy($expertiseID)
     {
-        // $delete = ExpertiseModel::findorFail($id);
-        // $delete->delete();
+        $result = new ExpertiseModel();
+
+        $data = $expertiseID;
+
+        $result->deleteExpertise($data);
+
 
         return redirect('expertise');
     }
