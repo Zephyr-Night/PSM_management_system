@@ -35,6 +35,12 @@ Route::get('/studentdashboard', function () {
 Auth::routes();
 Route::get('/lecturedashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('lecturedashboards');
 
+//lecture
+Route::resource('/LectureProfile', LectureController::class);
+
+//student profile
+Route::resource('/StudentProfile', StudentController::class);
+
 //inventory usage
 Route::resource('/inventory', inventoryusageController::class);
 Route::get('/listRequestLecture', [inventoryusageController::class, 'listRequestLecture'])->name('listRequestLecture');
