@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LectureController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TitleController;
 use App\Http\Controllers\inventoryusageController;
 use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\ProposalController;
@@ -44,6 +45,11 @@ Route::resource('/LectureProfile', LectureController::class);
 
 //student profile
 Route::resource('/StudentProfile', StudentController::class);
+
+//title
+Route::resource('/title', TitleController::class);
+Route::get('/listtitle', [TitleController::class, 'listtitlestudent'])->name('listtitle');
+Route::put('/Book/{id}', [TitleController::class, 'Book'])->name('Book');
 
 //inventory usage
 Route::resource('/inventory', inventoryusageController::class);
