@@ -16,12 +16,12 @@ class ExpertiseSeeder extends Seeder
     {
         $expertise = [
             [
-               'lectureID'=>'1',
+               'lectureId'=>'1',
                'expertiseName' => 'example',
                'expertiseLevel' => 'High'
             ]
         ];
-    
+
 
         foreach ($expertise as $key => $value) {
             ExpertiseModel::create($value);

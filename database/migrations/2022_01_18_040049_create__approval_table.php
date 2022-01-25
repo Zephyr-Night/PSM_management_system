@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInventoryusageTable extends Migration
+class CreateApprovalTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,19 @@ class CreateInventoryusageTable extends Migration
      */
     public function up()
     {
-        if(Schema::hasTable('inventoryusage')) return;
-        Schema::create('inventoryusage', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        if(Schema::hasTable('_approval')) return;
+        Schema::create('_approval', function (Blueprint $table) {
+            $table->id('approvalID');
             $table->unsignedBigInteger('studentId')->nullable();
             $table->unsignedBigInteger('lectureId')->nullable();
-            $table->unsignedBigInteger('itemId')->nullable();
-            $table->date('Startdate');
-            $table->date('Enddate');
-            $table->string('reason');
+            $table->unsignedBigInteger('proposalID')->nullable();
             $table->string('status');
+            $table->string('reasons');
 
             //foreign key
             $table->foreign('studentId')->references('studentId')->on('studentprofile');
             $table->foreign('lectureId')->references('lectureId')->on('lectureprofile');
-            $table->foreign('itemId')->references('itemId')->on('inventory_item');
+            $table->foreign('proposalID')->references('proposalID')->on('proposal');
         });
     }
 
@@ -38,6 +36,7 @@ class CreateInventoryusageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventoryusage');
+        Schema::dropIfExists('_approval');
+
     }
 }

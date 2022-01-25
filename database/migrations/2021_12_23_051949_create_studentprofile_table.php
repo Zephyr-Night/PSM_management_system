@@ -13,7 +13,7 @@ class CreateStudentprofileTable extends Migration
      */
     public function up()
     {
-
+        if(Schema::hasTable('studentprofile')) return;
         Schema::create('studentprofile', function (Blueprint $table) {
             $table->id ('studentId');
             $table->integer('user_id')->unsigned()->nullable()->index();
@@ -21,6 +21,10 @@ class CreateStudentprofileTable extends Migration
             $table->string('studentPhone');
             $table->string('student_Skill');
             $table->string('skill_Level');
+
+        });
+        Schema::table('studentprofile', function($table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -31,6 +35,10 @@ class CreateStudentprofileTable extends Migration
      */
     public function down()
     {
+        Schema::table('studentprofile', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
+        });
         Schema::dropIfExists('studentprofile');
     }
 }
