@@ -21,26 +21,28 @@ class CreateStudentSeeder extends Seeder
                'user_id'=>'1',
                'studentPhone'=>'011-12768501',
                'student_Skill'=>'coding',
-               'skill_Level'=> 'moderate',
+               'skill_Level'=> 'Intermediate',
             ],
             [
                 'studentName'=>'hasif',
                 'user_id'=>'2',
                 'studentPhone'=>'012-12345678',
                 'student_Skill'=>'AI',
-                'skill_Level'=> 'high',
+                'skill_Level'=> 'Advance',
             ],
             [
                 'studentName'=>'Biden',
+                'user_id'=>'7',
                 'studentPhone'=>'013-12345678',
                 'student_Skill'=>'Report',
-                'skill_Level'=> 'high',
+                'skill_Level'=> 'Advance',
             ],
             [
                 'studentName'=>'Gwen',
+                'user_id'=>'8',
                 'studentPhone'=>'014-12345678',
                 'student_Skill'=>'AI',
-                'skill_Level'=> 'low',
+                'skill_Level'=> 'Beginer',
             ],
 
         ];

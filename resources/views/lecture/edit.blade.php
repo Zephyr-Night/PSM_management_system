@@ -21,13 +21,13 @@
                             @csrf
                             <input type="hidden" name="_method" value="PUT">
 
-                            <label for="lectureName" class="form-label">lecture Name:</label>
+                            <label for="lectureName" class="form-label">Lecture Name:</label>
                             <input type="text" name="lectureName" id="lectureName" class="form-control" value="{{$data->lectureName}}"><br/>
 
                             <label for="lecture_Skill" class="form-label">Lecture Skill:</label>
                             <input type="text" name="lecture_Skill" id="lecture_Skill" class="form-control" value="{{$data->lecture_Skill}}"><br/>
 
-
+                            
                             @if ($data->skill_Level == 'Advance')
 
                             <input type="radio" id="skill_Level" name="skill_Level" value="Advance"checked >
@@ -36,8 +36,6 @@
                             <label for="age2">Intermediate</label><br>
                             <input type="radio" id="skill_Level" name="skill_Level" value="Beginer">
                             <label for="age3">Beginer</label><br><br>
-
-
 
                             @elseif ($data->skill_Level == 'Intermediate')
 

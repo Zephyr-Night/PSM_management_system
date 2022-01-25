@@ -20,26 +20,29 @@ class CreateLectureSeeder extends Seeder
                'lectureName'=>'Amir',
                'lecturePhone'=>'011-12345678',
                'lecture_Skill'=>'programming',
-               'skill_Level'=> 'high',
+               'skill_Level'=> 'Advance',
                'user_id' => '3',
             ],
             [
                 'lectureName'=>'Marie',
                 'lecturePhone'=>'012-12345678',
                 'lecture_Skill'=>'AI',
-                'skill_Level'=> 'high',
+                'skill_Level'=> 'Advance',
+                'user_id' => '4',
             ],
             [
                 'lectureName'=>'Biden',
                 'lecturePhone'=>'013-12345678',
                 'lecture_Skill'=>'Report',
-                'skill_Level'=> 'high',
+                'skill_Level'=> 'Intermediate',
+                'user_id' => '5',
             ],
             [
                 'lectureName'=>'Gwen',
                 'lecturePhone'=>'014-12345678',
                 'lecture_Skill'=>'AI',
-                'skill_Level'=> 'low',
+                'skill_Level'=> 'Beginer',
+                'user_id' => '6',
             ],
 
         ];

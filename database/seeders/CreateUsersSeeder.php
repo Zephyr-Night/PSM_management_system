@@ -64,6 +64,68 @@ class CreateUsersSeeder extends Seeder
 
              ],
 
+             [
+
+                'userID'=>'AA61Q212',
+
+                'islecture'=>'1',
+
+                'email'=>'ump2@gmail.com',
+
+                'password'=> bcrypt('12345678'),
+
+             ],
+
+             [
+
+                'userID'=>'AA61Q213',
+
+                'islecture'=>'1',
+
+                'email'=>'ump3@gmail.com',
+
+                'password'=> bcrypt('12345678'),
+
+             ],
+
+             [
+
+                'userID'=>'AA61Q214',
+
+                'islecture'=>'1',
+
+                'email'=>'ump4@gmail.com',
+
+                'password'=> bcrypt('12345678'),
+
+             ],
+
+             [
+
+                'userID'=>'CB19012',
+ 
+                'islecture'=>'0',
+ 
+                'email'=>'student1@gmail.com',
+ 
+                'password'=> bcrypt('12345678'),
+ 
+             ],
+
+             [
+
+                'userID'=>'CB19014',
+ 
+                'islecture'=>'0',
+ 
+                'email'=>'student2@gmail.com',
+ 
+                'password'=> bcrypt('12345678'),
+ 
+             ],
+
+             
+
         ];
 
 
