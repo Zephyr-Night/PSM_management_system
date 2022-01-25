@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\inventoryusageController;
 use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\ProposalController;
+use App\Http\Controllers\LogbookController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,3 +61,9 @@ Route::get('/expertiseEdit', function () {
 
 //Proposal
 Route::resource('/proposal', ProposalController::class);
+
+//Logbook
+Route::resource('/logbook', LogbookController::class);
+Route::get('/indexlogbooklecture', [LogbookController::class, 'indexlogbooklecture'])->name('indexlogbooklecture');
+Route::get('/verifylogbook/{id}', [LogbookController::class, 'verifylogbook'])->name('verifylogbook');
+Route::put('/confirmationverifylogbook/{id}', [LogbookController::class, 'confirmationverifylogbook'])->name('confirmationverifylogbook');
