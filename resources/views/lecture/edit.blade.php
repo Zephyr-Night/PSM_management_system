@@ -60,7 +60,7 @@
                             @endif
 
 
-                            <input type="submit" name="submit" value="Update Title" class="btn btn-success">
+                            <input type="submit" name="submit" value="Update Profile" class="btn btn-success">
                         </form>
                         @endforeach
                     </div>
