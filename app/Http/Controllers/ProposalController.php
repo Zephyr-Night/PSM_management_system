@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProposalModel;
 use Illuminate\Http\Request;
 
 class ProposalController extends Controller
@@ -13,7 +14,10 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        ///
+        $result = new ProposalModel();
+        $listlecture = $result->listlecture();
+
+        return view('SvHunting.searchsupervisor',compact(['listlecture']));
     }
 
     /**
