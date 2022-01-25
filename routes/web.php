@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\LectureController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\inventoryusageController;
 use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\ProposalController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
