@@ -41,7 +41,7 @@ class inventoryUsageModel extends Model
             //retrive user Primary Key data by using session (get from LoginController)
             $getsession = session()->get('userprimarykey');
 
-            //create new model instance studentprofileModel
+            //create object of class model studentprofileModel
             $user = new studentprofileModel();
 
             //find the first user_id data (foreign key) in db (table: studentprofile)
@@ -72,7 +72,7 @@ class inventoryUsageModel extends Model
                 //retrive user Primary Key data by using session (get from LoginController)
                 $getsession = $data->session()->get('userprimarykey');
 
-                //create new model instance studentprofileModel
+                //create object of class model studentprofileModel
                 $user = new studentprofileModel();
 
                 //find the first user_id data (foreign key) in db (table: studentprofile)

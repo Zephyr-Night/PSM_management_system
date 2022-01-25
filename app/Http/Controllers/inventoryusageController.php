@@ -79,7 +79,6 @@ class inventoryusageController extends Controller
 
     }
 
-    //approve / reject
     public function update(Request $request, $id)
     {
         $result = new inventoryUsageModel();
@@ -93,7 +92,6 @@ class inventoryusageController extends Controller
         return redirect('listRequestLecture');
     }
 
-    //student
     public function show($id)
     {
         $result = new inventoryUsageModel();
