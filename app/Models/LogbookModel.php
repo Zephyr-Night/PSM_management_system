@@ -76,7 +76,7 @@ class LogbookModel extends Model
 
         $user = $user::where('user_id',$getsession)->firstOrFail();
 
-        $checksv1 = ApprovalModel::Select()->where('studentId',$user->studentId)->with('fkLecture')->get();
+        $checksv1 = ApprovalModel::Select()->where('studentId',$user->studentId)->where('status', 'LIKE', 'Accepted')->with('fkLecture')->get();
 
         return $checksv1;
      }
@@ -85,7 +85,6 @@ class LogbookModel extends Model
      {
 
         $resultmatricID = User::where('id',$value)->get();
-
 
         return $resultmatricID;
      }
@@ -135,19 +134,26 @@ class LogbookModel extends Model
         return $updatelogbook;
      }
 
-     public function PUTmethod($data, $dataid)
-     {
-         $postupdate = LogbookModel::whereid($dataid)->first();
+    public function PUTmethod($data, $dataid)
+    {
+        $postupdate = LogbookModel::whereid($dataid)->first();
 
-         $result = new LogbookModel();
-         $id = $result->listlogbooktest();
+        $result = new LogbookModel();
+        $id = $result->listlogbooktest();
 
-         $postupdate->lectureId = $id->fkLecture->lectureId;
+        $postupdate->lectureId = $id->fkLecture->lectureId;
 
 
 
-         $postupdate->update($data->all());
-     }
+        $postupdate->update($data->all());
+    }
+
+    //delete
+    public function deleteLogbook($data)
+    {
+        $deleterequest = LogbookModel::findOrFail($data);
+        $deleterequest->delete();
+    }
 
 
 
