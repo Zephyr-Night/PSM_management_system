@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="/css/counting.css">
 @include('layouts.adminsidebar')
- <main class="py-4">  {{--create spacing --}}
+ <main class="py-4">  
     <div class="content">
         <div class="row justify-content-center">
             <div class="col-md-12">
