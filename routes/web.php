@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LectureController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SvHuntingController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\inventoryusageController;
 use App\Http\Controllers\ExpertiseController;
