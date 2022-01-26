@@ -37,14 +37,11 @@
                                 <td scope="row">{{$loop->iteration}}</td>
                                 <td>{{Auth::user()->userID}}</td>
 
-
                                 @if($aa11 == null)
                                    <td></td>
                                 @else
                                 <td>{{$aa11->fkLecture->lectureName}}</td>
                                 @endif
-
-
 
                                 <td>{{$logbooklist->meetingDate}}</td>
 
@@ -55,6 +52,13 @@
                                     <button type="button" onclick="window.location='{{route('logbook.show',$logbooklist->id)}}'" class="btn btn-primary">View</button>
 
                                     <button type="button" onclick="window.location='{{route('logbook.edit',$logbooklist->id)}}'" class="btn btn-info">Edit</button>
+
+                                    <form action="{{ route('logbook.destroy',$logbooklist->id) }}" onsubmit="return confirm('Are you sure you want to remove this logbook?');" method="post">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE">
+
+                                    <input type="submit" value="Delete" class="btn btn-danger">
+                                    </form>
 
                                 </td>
                                 @endif
