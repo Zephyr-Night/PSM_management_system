@@ -18,7 +18,7 @@
                         <br><br>
                         <table class="table" id="tableId">
                             <tr>
-                                <th>supervisor name</th>
+                                <th>Supervisor Name</th>
                             </tr>
                             @foreach ($listlecture as $data)
                             <tr>
