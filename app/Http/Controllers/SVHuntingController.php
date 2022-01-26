@@ -32,7 +32,7 @@ class SVHuntingController extends Controller
         print($studentInfo);
         Session::put('lectureId', $lectureId);
 
-       // return view('SvHunting.addProposal', compact(['studentInfo']));
+        return view('SvHunting.addProposal', compact(['studentInfo']));
     }
 
     /**
