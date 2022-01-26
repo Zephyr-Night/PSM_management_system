@@ -78,3 +78,9 @@ Route::resource('/logbook', LogbookController::class);
 Route::get('/indexlogbooklecture', [LogbookController::class, 'indexlogbooklecture'])->name('indexlogbooklecture');
 Route::get('/verifylogbook/{id}', [LogbookController::class, 'verifylogbook'])->name('verifylogbook');
 Route::put('/confirmationverifylogbook/{id}', [LogbookController::class, 'confirmationverifylogbook'])->name('confirmationverifylogbook');
+
+//proposal
+Route::resource('/SvHunting', SvHuntingController::class);
+Route::get('/AddProposal/{id}', [SvHuntingController::class, 'addProposal'])->name('addProposal');
+Route::get('/MySupervisor', [SvHuntingController::class, 'mySupervisor'])->name('mySupervisor');
+Route::get('/ProposalView/{id}', [SvHuntingController::class, 'view'])->name('ProposalView');
