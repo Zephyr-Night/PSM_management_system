@@ -42,7 +42,7 @@
                                     <br><br>
                                 {{-- </td>
                                 <td> --}}
-                                    <form action="{{ route('title.destroy',$titlelist1->id) }}" onsubmit="return confirm('Are you sure you want to cancel this request?');" method="post">
+                                    <form action="{{ route('title.destroy',$titlelist1->id) }}" onsubmit="return confirm('Are you sure you want to delete?');" method="post">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
 
