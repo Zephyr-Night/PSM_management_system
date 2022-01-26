@@ -2,7 +2,9 @@
 
 namespace app\Models;
 
+use App\Models\inventoryitemModel;
 use App\Models\studentprofileModel;
+use App\Models\lectureprofileModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,7 +25,7 @@ class inventoryusageModel extends Model
     //intentoryitem (itemid) is belong to model inventoryitemmodel
     public function inventoryitem()
     {
-        return $this->belongsTo('App\Models\inventoryitemModel','itemId','itemId');
+        return $this->belongsTo(inventoryitemModel::class,'itemId','itemId');
     }
       //studentprofile (studentId) is belong to model studentprofileModel
     public function studentprofile()

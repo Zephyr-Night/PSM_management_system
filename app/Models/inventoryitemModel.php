@@ -28,5 +28,5 @@ class inventoryitemModel extends Model
     {
         return $this->hasOne('App\Models\inventoryusageModel','itemId','itemId');
     }
-
 }
+
