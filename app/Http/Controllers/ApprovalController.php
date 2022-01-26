@@ -11,18 +11,14 @@ class ApprovalController extends Controller
     public function index()
     {
         $result = new  ApprovalModel();
-        $listproposal = $result->indexapprovalstatus();
-        $getforeignkey= $result->checkforeignkey($listproposal);
+        $listproposal = $result->indexapprovalstatus();//find a total student sent a approval for one lecture
+        $getforeignkey= $result->checkforeignkey($listproposal);//cari data approval
 
-        // foreach($getforeignkey as $aaa)
-        // {
-        //     print($aaa );
-        // }
 
          return view('approval.indexlecture',compact(['listproposal','getforeignkey']));
     }
 
-    public function viewApproval($id)
+    public function viewApproval($id)// sebab kt create function xde parameter, bab tu ar buat buat custom function
     {
         $result = new ApprovalModel();
         $specificproposaldata = $result->showspecificproposaldata($id);

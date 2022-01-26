@@ -39,13 +39,15 @@ class ApprovalModel extends Model
     //display approval status
     public function indexapprovalstatus()
     {
-        
+        //get user PK
         $getsession = session()->get('userprimarykey');
-        
+        //create new model instance
         $user = new lectureprofileModel();
 
+        //find a specific lecture details by using where(user_id == users (table) primary key)
         $user = $user::where('user_id',$getsession)->firstOrFail();
 
+        //display list of student who sent a proposal for one lecture
         $titlelist = ProposalModel::Select()->where('lectureId',$user->lectureId)->with('studentprofile')->get();
 
         return $titlelist;
