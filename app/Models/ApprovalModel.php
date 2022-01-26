@@ -23,7 +23,7 @@ class ApprovalModel extends Model
 
     public function fkproposal()
     {
-        return $this->belongsTo('App\Models\ProposalModel','proposalID', 'proposalID');
+        return $this->belongsTo('App\Models\SVHuntingModel','proposalID', 'proposalID');
     }
 
     public function fkStudent()
@@ -63,7 +63,7 @@ class ApprovalModel extends Model
 
     public function showspecificproposaldata($data)
     {
-        $updatetitle = ProposalModel::where('proposalID',$data)->first();
+        $updatetitle = SVHuntingModel::where('proposalID',$data)->first();
 
         return $updatetitle;
     }
@@ -110,7 +110,7 @@ class ApprovalModel extends Model
     }
     public function pendingstatus($id)
     {
-        $postupdate = ProposalModel::where('proposalID',$id)->first();
+        $postupdate = SVHuntingModel::where('proposalID',$id)->first();
         return $postupdate;
     }
 
