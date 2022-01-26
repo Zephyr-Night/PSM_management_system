@@ -39,9 +39,9 @@ class ApprovalModel extends Model
     //display approval status
     public function indexapprovalstatus()
     {
-
+        
         $getsession = session()->get('userprimarykey');
-
+        
         $user = new lectureprofileModel();
 
         $user = $user::where('user_id',$getsession)->firstOrFail();
@@ -52,25 +52,10 @@ class ApprovalModel extends Model
     }
 
 
-    public function checkforeignkey($data)
+    public function checkforeignkey()
     {
-        $updatetitle = array();
-
-        $checkdataapproval = ApprovalModel::get();
-        foreach($data as $checkforeigndata)
-        {
-            foreach($checkdataapproval as $checkvalue)
-            {
-                if($checkvalue->proposalID == null)
-                {
-                }
-                elseif($checkvalue->proposalID == $checkforeigndata->proposalID)
-                {
-                    $updatetitle[] = ApprovalModel::where('proposalID',$checkforeigndata->proposalID)->first();
-                }
-            }
-        }
-        return $updatetitle;
+        $checkdataapproval = ApprovalModel::get(); //get all approval data
+        return $checkdataapproval;
     }
 
 
