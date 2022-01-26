@@ -27,7 +27,6 @@ class LogbookController extends Controller
         $result = new LogbookModel();
         $checksv = $result->checksv();
 
-
         return view('logbook.generatelogbook',compact(['checksv']));
     }
 
@@ -67,6 +66,18 @@ class LogbookController extends Controller
         $data = $request;
         $dataid = $id;
         $result->PUTmethod($data,$dataid);
+
+        return redirect('logbook');
+    }
+
+    public function destroy($id)
+    {
+        $result = new LogbookModel();
+
+        $data = $id;
+
+        $result->deleteLogbook($data);
+
 
         return redirect('logbook');
     }
