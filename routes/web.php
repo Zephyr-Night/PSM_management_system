@@ -51,7 +51,7 @@ Route::get('/studentApprovelist', [inventoryusageController::class, 'studentAppr
 Route::get('/listApprovetLecture', [inventoryusageController::class, 'listApprovetLecture'])->name('listApprovetLecture');
 
 
-//Routes for Expertise
+//route for Expertise
 Route::resource('/expertise', ExpertiseController::class);
 Route::get('/ListLecture', [ExpertiseController::class, 'listLecture'])->name('ListLectureExpertise');
 Route::get('/SvHunting/expertise/{id}', [ExpertiseController::class, 'view'])->name('SvHuntingExpertise');
