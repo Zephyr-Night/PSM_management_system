@@ -37,15 +37,15 @@
                                 <td scope="row">{{$loop->iteration}}</td>
                                 <td>{{Auth::user()->userID}}</td>
 
-                                @if($aa11 == null)
+                                @if($approve == null)
                                    <td></td>
                                 @else
-                                <td>{{$aa11->fkLecture->lectureName}}</td>
+                                <td>{{$approve->fkLecture->lectureName}}</td>
                                 @endif
 
                                 <td>{{$logbooklist->meetingDate}}</td>
 
-                                @if($aa11 == null)
+                                @if($approve == null)
                                  <td></td>
                                 @else
                                 <td>

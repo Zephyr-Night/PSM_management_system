@@ -24,7 +24,7 @@
                         <label >{{Auth::user()->userID}}</label> <br>
 
                         <label>Supervisor Name:</label>
-                        <label >{{$aa11->fkLecture->lectureName}}</label> <br>
+                        <label >{{$approve->fkLecture->lectureName}}</label> <br>
 
 
                         <label>Meeting date:</label>
