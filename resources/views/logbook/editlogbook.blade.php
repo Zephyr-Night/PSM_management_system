@@ -21,14 +21,14 @@
                             @csrf
                             <input type="hidden" name="_method" value="PUT">
 
-                            <label for="project_title" class="form-label">Name:</label>
+                            <label for="name" class="form-label">Name:</label>
                             <label style="margin-left:2.5em">{{Auth::user()->studentprofileFK->studentName}}</label><br>
 
-                            <label for="project_description" class="form-label">Matric ID:</label>
+                            <label for="matricID" class="form-label">Matric ID:</label>
                             <label style="margin-left:2.5em">{{Auth::user()->userID}}</label><br>
 
                             @foreach ($checksv as $findsvname)
-                            <label for="project_description" class="form-label">Supervisor Name:</label>
+                            <label for="svName" class="form-label">Supervisor Name:</label>
                             <label >{{$findsvname->fkLecture->lectureName}}</label><br>
                             @endforeach
 
