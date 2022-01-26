@@ -6,17 +6,19 @@ use App\Models\SVHuntingModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class SVHuntingController extends Controller
-{
 
+class SvHuntingController extends Controller
+{
     public function index()
     {
         $result = new SVHuntingModel();
 
         $listlecture = $result->lectureList();
 
-        return view('SvHunting.searchsupervisor',compact(['listlecture']));
+       return view('SvHunting.searchSupervisor',compact(['listlecture']));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -29,10 +31,9 @@ class SVHuntingController extends Controller
 
         $studentInfo = $result->studentInfo();
 
-        print($studentInfo);
         Session::put('lectureId', $lectureId);
 
-        return view('SvHunting.addProposal', compact(['studentInfo']));
+        return view('SvHunting.addProposal',compact(['studentInfo']));
     }
 
     /**
@@ -57,15 +58,9 @@ class SVHuntingController extends Controller
 
         $listProposal = $result->mySupervisor();
 
-        return view('SvHunting.MySupervisor', compact(['listProposal']));
+       return view('SvHunting.MySupervisor',compact(['listProposal']));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function view($id)
     {
         $result = new SVHuntingModel();
@@ -91,7 +86,7 @@ class SVHuntingController extends Controller
 
         $valueProposal = $result->changeProposal($data);
 
-        return view('SvHunting.edit', compact(['valueProposal']));
+        return view('SvHunting.edit',compact(['valueProposal']));
     }
 
     /**
@@ -121,8 +116,11 @@ class SVHuntingController extends Controller
     public function destroy($id)
     {
         $result = new SVHuntingModel();
+
         $data = $id;
+
         $result->deleteProposal($data);
+
 
         return redirect('MySupervisor');
     }
