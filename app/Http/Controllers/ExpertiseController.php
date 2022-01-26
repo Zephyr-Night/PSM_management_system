@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ExpertiseModel;
 use Illuminate\Http\Request;
-use App\Models\studentprofileModel;
-use Illuminate\Contracts\Session\Session;
 use App\Models\lectureprofileModel;
-use Illuminate\Support\Facades\DB;
-use App\Models\User;
 
 class ExpertiseController extends Controller
 {
@@ -17,13 +13,14 @@ class ExpertiseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Redirect to expertise Edit/Add page
     public function index(){
         $result = new ExpertiseModel();
 
         $lectureExpertise = $result->indexLecture();
         return view('expertise.edit', compact(['lectureExpertise']));
     }
-
+    //list lecture for lecture
     public function listLecture(){
         $result = new ExpertiseModel();
 
@@ -32,7 +29,7 @@ class ExpertiseController extends Controller
        return view('expertise.index',compact(['listlecture']));
     }
 
-
+    //view expertise page for student
     public function view($id){
         $result = new ExpertiseModel();
         
@@ -51,6 +48,7 @@ class ExpertiseController extends Controller
         return view('expertise.edit');
     }
 
+    //store the request to the database
     public function store(Request $request)
     {
         //retrive user Primary Key data by using session (get from LoginController)
@@ -58,7 +56,7 @@ class ExpertiseController extends Controller
 
         $user = new lectureprofileModel();
 
-        //find the first user_id data (foreign key) in db (table: studentprofile)
+        //find the first user_id data (foreign key) in db (table: lectureprofile)
         $user = $user::where('user_id',$getsession)->firstOrFail();
 
         //retieve all input data
@@ -66,7 +64,7 @@ class ExpertiseController extends Controller
 
         //create object of class model expertise
         $addExpertise = new ExpertiseModel($expertiseData);
-
+        
         $user->expertiseFK()->save($addExpertise);
 
         return redirect('expertise');
@@ -78,6 +76,7 @@ class ExpertiseController extends Controller
      * @param  \App\Models\ExpertiseModel  $expertiseModel
      * @return \Illuminate\Http\Response
      */
+    //view expertise page for lecture
     public function show($id)
     {
         $result = new ExpertiseModel();
@@ -90,17 +89,7 @@ class ExpertiseController extends Controller
         return view('expertise.viewLecture', compact(['lectureExpertise', 'lectureInfo']));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ExpertiseModel  $expertiseModel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ExpertiseModel $expertiseModel)
-    {
-        //
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -108,6 +97,7 @@ class ExpertiseController extends Controller
      * @param  \App\Models\ExpertiseModel  $expertiseModel
      * @return \Illuminate\Http\Response
      */
+    //update the request to the database
     public function update(Request $request, $id)
     {
         $result = new ExpertiseModel();
@@ -125,6 +115,7 @@ class ExpertiseController extends Controller
      * @param  \App\Models\ExpertiseModel  $expertiseModel
      * @return \Illuminate\Http\Response
      */
+     //Delete the expertise data in the lecture expertise \
     public function destroy($expertiseID)
     {
         $result = new ExpertiseModel();

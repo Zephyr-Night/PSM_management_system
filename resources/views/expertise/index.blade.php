@@ -15,7 +15,6 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        {{-- {{Auth::user()->userID}} --}}
 
 
 
@@ -26,6 +25,7 @@
                                 <th>Lecture Name</th>
 
                             </tr>
+                            {{-- list of lecture with lecture id and Name --}}
                             @foreach ($listlecture as $listlecture)
                             <tr>
                                 <td>{{$listlecture->userID}}</td>

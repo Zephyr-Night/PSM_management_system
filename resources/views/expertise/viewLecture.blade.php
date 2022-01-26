@@ -3,7 +3,7 @@
 @section('content')
 
 @include('layouts.adminsidebar')
-<main class="py-4">  {{--create spacing --}}
+<main class="py-4">  
     <div class="content">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -15,7 +15,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        {{-- {{Auth::user()->userID}} --}}
+                        {{-- Lecture info section --}}
                         @foreach ($lectureInfo as $info)
                             @csrf
                             <div class="form-group">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="card">
+                <div class="card"> {{-- expertise view section --}}
                     <div class="card-header">View Expertise</div>
                     <div class="card-body">
                         @foreach ($lectureExpertise as $expertise)
@@ -59,6 +59,7 @@
                             <p class="h4">{{$expertise->expertiseName}}</label>
                             <br>
                             <div>
+                            {{-- switch case for expertise level so that it show the expertise level wither it is high or low according in the database in a progress bar format --}}
                             @switch($expertise->expertiseLevel)
                                 @case('Very High')
                                     <div class="progress">
