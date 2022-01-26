@@ -15,7 +15,7 @@ class SVHuntingController extends Controller
 
         $listlecture = $result->lectureList();
 
-        return view('SvHunting.searchSupervisor',compact(['listlecture']));
+        return view('SvHunting.searchsupervisor',compact(['listlecture']));
     }
 
     /**

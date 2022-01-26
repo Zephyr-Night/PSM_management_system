@@ -41,7 +41,7 @@ class SVHuntingModel extends Model
     public function lectureList()
     {
         $listLecture = DB::table('lectureprofile')
-        -> join('users', 'users.id','=', 'lectureprofile.users_id')
+        -> join('users', 'users.id','=', 'lectureprofile.user_id')
         -> select('lectureprofile.*','users.*')
         -> get();
 
