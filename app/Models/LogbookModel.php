@@ -35,9 +35,9 @@ class LogbookModel extends Model
         return $this->belongsTo('App\Models\lectureprofileModel','lectureId','lectureId');
     }
 
-    //index
-    public function listlogbook()
-    {
+     //index
+     public function listlogbook()
+     {
 
         $getsession = session()->get('userprimarykey');
 
@@ -48,12 +48,12 @@ class LogbookModel extends Model
         $titlelist = LogbookModel::Select()->where('studentId',$user->studentId)->with('fkLecture')->get();
 
         return $titlelist;
-    }
+     }
 
 
-    //display sv data in index
-    public function listlogbooktest()
-    {
+     //display sv data in index
+     public function listlogbooktest()
+     {
 
         $getsession = session()->get('userprimarykey');
 
@@ -81,13 +81,13 @@ class LogbookModel extends Model
         return $checksv1;
     }
 
-    public function checklecturedataindashboard($value)
-    {
+     public function checklecturedataindashboard($value)
+     {
 
         $resultmatricID = User::where('id',$value)->get();
 
         return $resultmatricID;
-    }
+     }
 
 
 
@@ -129,12 +129,12 @@ class LogbookModel extends Model
         return $updatetitle;
     }
 
-    public function editlogbook($data)
-    {
+     public function editlogbook($data)
+     {
         $updatelogbook = LogbookModel::findOrFail($data);
 
         return $updatelogbook;
-    }
+     }
 
     
     //

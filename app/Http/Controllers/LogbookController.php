@@ -70,6 +70,7 @@ class LogbookController extends Controller
         return redirect('logbook');
     }
 
+    //delete the logbook data
     public function destroy($id)
     {
         $result = new LogbookModel();
