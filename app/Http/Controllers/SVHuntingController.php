@@ -29,9 +29,10 @@ class SVHuntingController extends Controller
 
         $studentInfo = $result->studentInfo();
 
+        print($studentInfo);
         Session::put('lectureId', $lectureId);
 
-        return view('SvHunting.addProposal', compact(['studentInfo']));
+       // return view('SvHunting.addProposal', compact(['studentInfo']));
     }
 
     /**
@@ -65,10 +66,10 @@ class SVHuntingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $result = new SVHuntingModel();
-        
+
         $data = $id;
 
         $showProposal = $result->viewProposal($data);
