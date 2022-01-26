@@ -13,12 +13,12 @@ class LogbookController extends Controller
         $result = new LogbookModel();
 
         $listlogbookstudent = $result->listlogbook();
-        $aa11 = $result->listlogbooktest();
+        $approve = $result->listlogbooktest();
 
-        // print($aa11);
+        // print($approve);
 
         // print($listlogbookstudent);
-      return view('logbook.index',compact(['listlogbookstudent','aa11']));
+      return view('logbook.index',compact(['listlogbookstudent','approve']));
     }
 
 
@@ -45,9 +45,9 @@ class LogbookController extends Controller
     {
         $result = new LogbookModel();
        $datauser = $result->showspecificlogbook($id);
-       $aa11 = $result->listlogbooktest();
+       $approve = $result->listlogbooktest();
 
-       return view('logbook.viewlogbookspecific',compact(['datauser','aa11']));
+       return view('logbook.viewlogbookspecific',compact(['datauser','approve']));
     }
 
     public function edit($id)

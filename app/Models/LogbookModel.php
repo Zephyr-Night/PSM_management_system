@@ -35,9 +35,9 @@ class LogbookModel extends Model
         return $this->belongsTo('App\Models\lectureprofileModel','lectureId','lectureId');
     }
 
-     //index
-     public function listlogbook()
-     {
+    //index
+    public function listlogbook()
+    {
 
         $getsession = session()->get('userprimarykey');
 
@@ -48,12 +48,12 @@ class LogbookModel extends Model
         $titlelist = LogbookModel::Select()->where('studentId',$user->studentId)->with('fkLecture')->get();
 
         return $titlelist;
-     }
+    }
 
 
-     //display sv data in index
-     public function listlogbooktest()
-     {
+    //display sv data in index
+    public function listlogbooktest()
+    {
 
         $getsession = session()->get('userprimarykey');
 
@@ -64,11 +64,11 @@ class LogbookModel extends Model
         $checksvforFKinsert = ApprovalModel::where('studentId',$user->studentId)->with('fkLecture')->first();
 
         return $checksvforFKinsert;
-     }
+    }
 
 
-     public function checksv()
-     {
+    public function checksv()
+    {
 
         $getsession = session()->get('userprimarykey');
 
@@ -79,26 +79,28 @@ class LogbookModel extends Model
         $checksv1 = ApprovalModel::Select()->where('studentId',$user->studentId)->where('status', 'LIKE', 'Accepted')->with('fkLecture')->get();
 
         return $checksv1;
-     }
+    }
 
-     public function checklecturedataindashboard($value)
-     {
+    public function checklecturedataindashboard($value)
+    {
 
         $resultmatricID = User::where('id',$value)->get();
 
         return $resultmatricID;
-     }
+    }
 
 
 
-           //store
+    //store
     public function store($data)
     {
-
+        //get user primary key
         $getsession = $data->session()->get('userprimarykey');
-
+        
+        //create new model instance
         $user = new studentprofileModel();
 
+        //find a specific lecture details by using where(user_id == users (table) primary key)
         $user = $user::where('user_id',$getsession)->firstOrFail();
 
         $addlogbookdata = $data->all();
@@ -127,13 +129,15 @@ class LogbookModel extends Model
         return $updatetitle;
     }
 
-     public function editlogbook($data)
-     {
+    public function editlogbook($data)
+    {
         $updatelogbook = LogbookModel::findOrFail($data);
 
         return $updatelogbook;
-     }
+    }
 
+    
+    //
     public function PUTmethod($data, $dataid)
     {
         $postupdate = LogbookModel::whereid($dataid)->first();
@@ -143,12 +147,10 @@ class LogbookModel extends Model
 
         $postupdate->lectureId = $id->fkLecture->lectureId;
 
-
-
         $postupdate->update($data->all());
     }
 
-    //delete
+    //delete logbook
     public function deleteLogbook($data)
     {
         $deleterequest = LogbookModel::findOrFail($data);
@@ -157,7 +159,7 @@ class LogbookModel extends Model
 
 
 
-      //index lecture dasboard
+    //index lecture dasboard
     public function logbookstudent()
     {
         $getsession = session()->get('userprimarykey');
@@ -172,25 +174,23 @@ class LogbookModel extends Model
 
     }
 
-       //index lecture dasboard
-       public function checkapprovestudent()
-       {
-           $getsession = session()->get('userprimarykey');
+    //index lecture dasboard
+    public function checkapprovestudent()
+    {
+        $getsession = session()->get('userprimarykey');
 
-           $user = new lectureprofileModel();
+        $user = new lectureprofileModel();
 
-           $user = $user::where('user_id',$getsession)->firstOrFail();
+        $user = $user::where('user_id',$getsession)->firstOrFail();
 
-           $approvestudent = ApprovalModel::Select()->where('lectureId',$user->lectureId)->where('status','like','Accepted')->with('fkStudent')->get();
+        $approvestudent = ApprovalModel::Select()->where('lectureId',$user->lectureId)->where('status','like','Accepted')->with('fkStudent')->get();
 
-            return $approvestudent;
-       }
-
-
+        return $approvestudent;
+    }
 
 
 
-
+    //verify logbook
     public function verifylogbookmodel($data)
     {
        $updatelogbook = LogbookModel::findOrFail($data);
