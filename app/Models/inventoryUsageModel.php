@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace app\Models;
 
-use GuzzleHttp\Psr7\Request;
+use App\Models\studentprofileModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class inventoryUsageModel extends Model
+class inventoryusageModel extends Model
 {
     use HasFactory;
     protected $table = 'inventoryusage';

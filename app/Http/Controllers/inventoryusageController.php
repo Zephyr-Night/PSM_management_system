@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\inventoryitemModel;
-use App\Models\inventoryUsageModel;
+use App\Models\inventoryusageModel;
 use App\Models\studentprofileModel;
 use App\Models\lectureprofileModel;
 use Illuminate\Contracts\Session\Session;
