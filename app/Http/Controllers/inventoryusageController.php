@@ -91,7 +91,7 @@ class inventoryusageController extends Controller
         return redirect('listRequestLecture');
     }
 
-    //student s
+    //student
     public function show($id)
     {
         $result = new inventoryUsageModel();
