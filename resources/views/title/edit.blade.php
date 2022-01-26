@@ -29,10 +29,10 @@
                             </select><br/>
 
                             <label for="project_title" class="form-label">Project Title:</label>
-                            <input type="text" name="project_title" id="project_title" class="form-control"><br/>
+                            <input type="text" name="project_title" id="project_title" class="form-control" value="{{$valuetitle->project_title}}"><br/>
 
                             <label for="project_description" class="form-label">Project Description:</label>
-                            <input type="text" name="project_description" id="project_description" class="form-control"><br/>
+                            <input type="text" name="project_description" id="project_description" class="form-control" value="{{$valuetitle->project_description}}"><br/>
 
                             <input type="submit" name="submit" value="Submit Request" class="btn btn-success">
                         </form>
