@@ -68,6 +68,10 @@ Route::get('/expertiseEdit', function () {
 //Proposal
 Route::resource('/proposal', ProposalController::class);
 
+//approval
+Route::resource('/Approval', ApprovalController::class);
+Route::get('/viewApproval/{id}', [ApprovalController::class, 'viewApproval'])->name('viewApproval');
+
 //Logbook
 Route::resource('/logbook', LogbookController::class);
 Route::get('/indexlogbooklecture', [LogbookController::class, 'indexlogbooklecture'])->name('indexlogbooklecture');
