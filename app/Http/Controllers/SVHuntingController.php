@@ -15,7 +15,7 @@ class SVHuntingController extends Controller
 
         $listlecture = $result->lectureList();
 
-        return view('SvHunting.searchSupervisor',compact(['listlecture']));
+        return view('SvHunting.searchsupervisor',compact(['listlecture']));
     }
 
     /**
@@ -90,7 +90,7 @@ class SVHuntingController extends Controller
 
         $valueProposal = $result->changeProposal($data);
 
-        return view('SvHunting.edit', compact([valueProposal]));
+        return view('SvHunting.edit', compact(['valueProposal']));
     }
 
     /**

@@ -53,7 +53,7 @@ class SVHuntingModel extends Model
 
         $user = new studentprofileModel();
 
-        $user = $user::where('user_id',$getssion)->firstOrFail();
+        $user = $user::where('user_id',$getsession)->firstOrFail();
 
         $studentInfo = DB::table('studentprofile')
         -> join('users', 'users.id','=', 'studentprofile.user_id')
