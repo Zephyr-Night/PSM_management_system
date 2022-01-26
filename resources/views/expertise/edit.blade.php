@@ -19,7 +19,7 @@
                         @php
                             $no=0;   
                         @endphp
-                        
+                        {{-- the edit and delete expertise section --}}
                         @foreach ($lectureExpertise as $expertise)
                             <form method="post" action="{{ route('expertise.update', $expertise->expertiseID) }}" onsubmit="return confirm('Are you sure want to update this expertise?');">    
                                 @csrf
@@ -35,6 +35,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-10">
+                                        {{-- switch case for expertise level so that the system will select the original level when the user open the page --}}
                                         @switch($expertise->expertiseLevel)
                                             @case('Very High')
                                                 <select class="form-control" name="expertiseLevel">
@@ -73,7 +74,7 @@
                                     </div>
                                 </form>
                                 <div class="col-sm-2">
-                                    
+                                    {{-- function for delete the expertise --}}
                                     <form action="{{ route('expertise.destroy',$expertise->expertiseID) }}" onsubmit="return confirm('Are you sure want to delete this expertise?');" method="post">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
@@ -91,7 +92,7 @@
                     </div>
                 </div>
                 <br><br>
-                <div class="card">
+                <div class="card">{{-- add expertise section --}}
                     <div class="card-header">Add Expertise</div>
                     <div class="card-body">
                         <form method="post" action="{{ route('expertise.store') }}">
