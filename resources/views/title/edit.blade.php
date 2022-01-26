@@ -18,9 +18,12 @@
                         {{-- {{Auth::user()->userID}} --}}
                         <button type="button" onclick="window.location='{{route('title.index')}}'" class="btn btn-primary">Back</button>
                         <br><br>
-                        <form method="post" action="{{ route('title.store') }}">
+                        <form method="post" action="{{ route('title.update',$valuetitle->id) }}">
                             @csrf
+                            <input type="hidden" name="_method" value="PUT">
+
                             <label for="field">Select a field:</label>
+
                             <select class="form-control" name="field">
                                 <option value="BCS">BCS</option>
                                 <option value="saab">BCN</option>
@@ -29,10 +32,10 @@
                             </select><br/>
 
                             <label for="project_title" class="form-label">Project Title:</label>
-                            <input type="text" name="project_title" id="project_title" class="form-control"><br/>
+                            <input type="text" name="project_title" id="project_title" class="form-control" value="{{$valuetitle->project_title}}"><br/>
 
                             <label for="project_description" class="form-label">Project Description:</label>
-                            <input type="text" name="project_description" id="project_description" class="form-control"><br/>
+                            <input type="text" name="project_description" id="project_description" class="form-control" value="{{$valuetitle->project_description}}"><br/>
 
                             <input type="submit" name="submit" value="Submit Request" class="btn btn-success">
                         </form>
