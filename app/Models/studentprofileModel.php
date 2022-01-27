@@ -32,7 +32,7 @@ class studentprofileModel extends Model
 
     public function inventoryusage()
     {
-        return $this->hasMany('App\Models\inventoryUsage','studentId','studentId' );
+        return $this->hasMany('App\Models\inventoryusageModel','studentId','studentId' );
     }
 
     public function title()

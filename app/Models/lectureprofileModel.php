@@ -25,7 +25,7 @@ class lectureprofileModel extends Model
 
     public function inventoryusage()
     {
-        return $this->hasMany('App\Models\inventoryUsage','lectureId','lectureId');
+        return $this->hasMany('App\Models\inventoryusageModel','lectureId','lectureId');
     }
 
     public function expertiseFK(){
