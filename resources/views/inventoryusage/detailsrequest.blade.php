@@ -15,7 +15,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        {{-- {{Auth::user()->userID}} --}}
+
                         <button type="button" onclick="window.location='{{route('inventory.index')}}'" class="btn btn-primary">Back</button>
                             <br><br>
 
