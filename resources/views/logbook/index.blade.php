@@ -26,8 +26,8 @@
                         <table class="table" id="tableId">
                             <tr>
                                 <th>No</th>
-                                <th>Matric ID</th>
                                 <th>Supervisor Name</th>
+                                <th>Student Name</th>
                                 <th>Meeting Date</th>
                                 <th colspan="2" style="text-align: left; ">Action</th>
 
