@@ -23,9 +23,9 @@
                             <label for="field">Select a field:</label>
                             <select class="form-control" name="field">
                                 <option value="BCS">BCS</option>
-                                <option value="saab">BCN</option>
-                                <option value="mercedes">BCG</option>
-                                <option value="audi">DCS</option>
+                                <option value="BCN">BCN</option>
+                                <option value="BCG">BCG</option>
+                                <option value="DCS">DCS</option>
                             </select><br/>
 
                             <label for="project_title" class="form-label">Project Title:</label>

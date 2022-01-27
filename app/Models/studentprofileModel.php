@@ -16,7 +16,7 @@ class studentprofileModel extends Model
 
     protected $fillable= [
         'studentName',
-        'studentPhone',
+        // 'studentPhone',
         'student_Skill',
         'skill_Level',
     ];
@@ -32,7 +32,7 @@ class studentprofileModel extends Model
 
     public function inventoryusage()
     {
-        return $this->hasMany('App\Models\inventoryusageModel','studentId','studentId' );
+        return $this->hasMany('App\Models\inventoryUsage','studentId','studentId' );
     }
 
     public function title()
@@ -118,4 +118,5 @@ class studentprofileModel extends Model
         $updateprofile = studentprofileModel::where('studentId',$id)->first();
         $updateprofile->update($data->all());
     }
+
 }

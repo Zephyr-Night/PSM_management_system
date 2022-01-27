@@ -20,7 +20,7 @@ class CreateTitleTable extends Migration
             $table->string('field');
             $table->string('project_title');
             $table->string('project_description');
-            
+
               //foreign key
               $table->foreign('lectureId')->references('lectureId')->on('lectureprofile');
             });

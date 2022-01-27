@@ -26,7 +26,7 @@ class TitleModel extends Model
         return $this->belongsTo('App\Models\studentprofileModel','studentId','studentId');
     }
 
-    //lecturer index title
+    //index
     public function indextitle()
     {
 
@@ -41,7 +41,7 @@ class TitleModel extends Model
         return $titlelist;
     }
 
-       //student title
+       //index
        public function studenttitle()
        {
         $studenttitle = TitleModel::Select()->orWhereNull('studentId')->with('lectureprofile')->get();
@@ -51,7 +51,7 @@ class TitleModel extends Model
 
 
 
-      //lecturer add title
+      //store
     public function store($data)
     {
 
@@ -68,7 +68,6 @@ class TitleModel extends Model
         $user->title()->save($addtitlefinal);
     }
 
-    //lecturer edit title
     public function changetitle($data)
     {
         $updatetitle = TitleModel::findOrFail($data);
@@ -82,14 +81,13 @@ class TitleModel extends Model
         $postupdate->update($data->all());
     }
 
-     //lecturer delete title
+     //delete
      public function deleteTitle($data)
      {
          $deleterequest = TitleModel::findOrFail($data);
          $deleterequest->delete();
      }
 
-     //student book title
      public function Book( $dataid)
      {
         $postupdate = TitleModel::whereid($dataid)->first();
@@ -104,7 +102,6 @@ class TitleModel extends Model
 
      }
 
-     //student view title
      public function viewtitle($data)
      {
          $updatetitle = TitleModel::findOrFail($data);
