@@ -26,6 +26,7 @@ class TitleModel extends Model
         return $this->belongsTo('App\Models\studentprofileModel','studentId','studentId');
     }
 
+
     //index
     public function indextitle()
     {
@@ -44,6 +45,8 @@ class TitleModel extends Model
        //index
        public function studenttitle()
        {
+
+
         $studenttitle = TitleModel::Select()->orWhereNull('studentId')->with('lectureprofile')->get();
 
         return $studenttitle;
@@ -55,7 +58,7 @@ class TitleModel extends Model
     public function store($data)
     {
 
-        $getsession = session()->get('userprimarykey');
+        $getsession = $data->session()->get('userprimarykey');
 
         $user = new lectureprofileModel();
 
@@ -88,11 +91,11 @@ class TitleModel extends Model
          $deleterequest->delete();
      }
 
-     public function Book( $dataid)
+     public function Book($data, $dataid)
      {
         $postupdate = TitleModel::whereid($dataid)->first();
 
-       $getsession = session()->get('userprimarykey');
+       $getsession = $data->session()->get('userprimarykey');
 
        $user = new studentprofileModel();
 
