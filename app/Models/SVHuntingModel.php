@@ -120,6 +120,7 @@ class SVHuntingModel extends Model
 
         return $listProposal;
     }
+
     public function changeProposal($data)
     {
         $updateProposal = DB::table('proposal')
@@ -132,12 +133,16 @@ class SVHuntingModel extends Model
 
         return $updateProposal;
     }
+
+    //get the student profile with data id and update the new data to the model
     public function updateProposal($data, $dataid)
     {
         $postupdate = SVHuntingModel::where('proposalID',$dataid)->first();
 
         $postupdate->update($data->all());
     }
+
+    //get proposal with id and delete the data in the database
     public function deleteProposal($data)
     {
         $deleterequest = SVHuntingModel::Select()->where('proposalID',$data);
