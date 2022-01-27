@@ -9,11 +9,11 @@ class LectureController extends Controller
 {
 
 
-    public function edit($id)
+    public function edit($id)//
     {
         $result = new lectureprofileModel();
 
-        $updateprofile = $result->changetitle1($id);
+        $updateprofile = $result->changeprofile($id);
 
         return view('lecture.edit',compact(['updateprofile']));
     }

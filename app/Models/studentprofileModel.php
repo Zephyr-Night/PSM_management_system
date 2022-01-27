@@ -51,59 +51,59 @@ class studentprofileModel extends Model
     }
 
 
-    public function updateStudent($data, $id)//inventory item
-    {
-        $postupdate = studentprofileModel::whereid($id)->first();
+    // public function updateStudent($data, $id)//inventory item
+    // {
+    //     $postupdate = studentprofileModel::whereid($id)->first();
 
-        //retrive user Primary Key data by using session (get from LoginController)
-        $getsession = $data->session()->get('userprimarykey');
+    //     //retrive user Primary Key data by using session (get from LoginController)
+    //     $getsession = $data->session()->get('userprimarykey');
 
-        //create object of class model lectureprofileModel
-        $user = new lectureprofileModel();
+    //     //create object of class model lectureprofileModel
+    //     $user = new lectureprofileModel();
 
-       //find the first user_id data (foreign key) in db (table: lectureprofile)
-       $user = $user::where('user_id',$getsession)->firstOrFail();
-
-
-
-        switch($data->submitbutton)
-        {
-            case 'Approve Request':
-
-            $postupdate->status = "Approve";
-
-           $user->inventoryusage()->save($postupdate);
+    //    //find the first user_id data (foreign key) in db (table: lectureprofile)
+    //    $user = $user::where('user_id',$getsession)->firstOrFail();
 
 
-            //get quantity value from inventoryitemModel model
-            $valueInventoryitem = $postupdate->inventoryitem->quantity;
 
-            //  latest quantity value  = quantity value -1
-            $latestvalue = $valueInventoryitem - 1;
+    //     switch($data->submitbutton)
+    //     {
+    //         case 'Approve Request':
 
-            //get itemId primary key
-            $foreignkeyItemId = $postupdate->itemId;
+    //         $postupdate->status = "Approve";
 
-            //find itemId in db
-            $updateinventoryItem = inventoryitemModel::where('itemId',$foreignkeyItemId)->first();
+    //        $user->inventoryusage()->save($postupdate);
 
-            //update latest quantity value
-            $updateinventoryItem->quantity = $latestvalue;
 
-            //update data
-            $updateinventoryItem->save();
+    //         //get quantity value from inventoryitemModel model
+    //         $valueInventoryitem = $postupdate->inventoryitem->quantity;
 
-            break;
-            case 'Reject Request':
+    //         //  latest quantity value  = quantity value -1
+    //         $latestvalue = $valueInventoryitem - 1;
 
-            $postupdate->status = "Reject";
+    //         //get itemId primary key
+    //         $foreignkeyItemId = $postupdate->itemId;
 
-            $user->inventoryusage()->save($postupdate);
+    //         //find itemId in db
+    //         $updateinventoryItem = inventoryitemModel::where('itemId',$foreignkeyItemId)->first();
 
-            break;
-        }
+    //         //update latest quantity value
+    //         $updateinventoryItem->quantity = $latestvalue;
 
-    }
+    //         //update data
+    //         $updateinventoryItem->save();
+
+    //         break;
+    //         case 'Reject Request':
+
+    //         $postupdate->status = "Reject";
+
+    //         $user->inventoryusage()->save($postupdate);
+
+    //         break;
+    //     }
+
+    // }
 
 
      //index

@@ -43,10 +43,6 @@ class ExpertiseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('expertise.edit');
-    }
 
     //store the request to the database
     public function store(Request $request)

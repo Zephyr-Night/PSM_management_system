@@ -26,9 +26,9 @@
 
                             <select class="form-control" name="field">
                                 <option value="BCS">BCS</option>
-                                <option value="saab">BCN</option>
-                                <option value="mercedes">BCG</option>
-                                <option value="audi">DCS</option>
+                                <option value="BCN">BCN</option>
+                                <option value="BCG">BCG</option>
+                                <option value="DCS">DCS</option>
                             </select><br/>
 
                             <label for="project_title" class="form-label">Project Title:</label>
@@ -37,7 +37,7 @@
                             <label for="project_description" class="form-label">Project Description:</label>
                             <input type="text" name="project_description" id="project_description" class="form-control" value="{{$valuetitle->project_description}}"><br/>
 
-                            <input type="submit" name="submit" value="Submit Request" class="btn btn-success">
+                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
                         </form>
                     </div>
                 </div>
