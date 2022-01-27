@@ -17,7 +17,7 @@ class TitleController extends Controller
        return view('title.indextitle',compact(['titlelist']));
     }
 
-
+    //lecturer add title
     public function create()
     {
         return view('title.addtitle');
@@ -34,7 +34,7 @@ class TitleController extends Controller
         return redirect('title');
     }
 
-
+    //student show specific title
     public function show($id)
     {
         $result = new TitleModel();
@@ -83,7 +83,7 @@ class TitleController extends Controller
         return redirect('title');
     }
 
-    //display index student dashboard
+    //student display available title
     public function listtitlestudent()
     {
         $result = new TitleModel();
