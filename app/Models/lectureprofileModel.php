@@ -25,7 +25,7 @@ class lectureprofileModel extends Model
 
     public function inventoryusage()
     {
-        return $this->hasMany('App\Models\inventoryusageModel','lectureId','lectureId');
+        return $this->hasMany('App\Models\inventoryUsage','lectureId','lectureId');
     }
 
     public function expertiseFK(){
@@ -37,10 +37,26 @@ class lectureprofileModel extends Model
         return $this->hasMany('App\Models\TitleModel','lectureId','lectureId');
     }
 
+    public function logbook()
+    {
+        return $this->hasMany('App\Models\LogbookModel','lectureId','lectureId' );
+    }
+
     public function userid()
     {
         return $this->belongsTo('App\Models\User','id','user_id');
     }
+
+    public function svHunting()
+    {
+        return $this->hasMany('App\Models\SvHuntingModel','studentId','studentId');
+    }
+
+    public function Approval()
+    {
+        return $this->hasMany('App\Models\ApprovalModel','lectureId','lectureId');
+    }
+
 
      //index
      public function changetitle1($data)

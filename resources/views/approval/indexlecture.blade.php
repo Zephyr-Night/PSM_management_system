@@ -15,7 +15,6 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        {{-- {{Auth::user()->userID}} --}}
 
                         <br><br>
                         <table class="table" id="tableId">
@@ -25,26 +24,25 @@
                                 <th>Student Proposal</th>
 
                             </tr>
-                            @foreach ($listproposal as $dataproposal)
-                                @if ($getforeignkey == null)
-                                <tr>
-                                    <td scope="row">{{$loop->iteration}}</td>
-                                    <td>{{$dataproposal->studentprofile->studentName}}</td>
-                                    <td>  <button type="button" onclick="window.location='{{route('viewApproval',$dataproposal->proposalID)}}'" class="btn btn-primary">Add</button></td>
-                                </tr>
-                                @endif
-                            @foreach ($getforeignkey as $data)
-                                    @if($data->proposalID ==$dataproposal->proposalID)
+
+                            @foreach ($listproposal as $dataproposal)  {{-- use foreach to get a proposal data --}}
+                                @foreach ($getforeignkey as $data) {{-- use foreach to get a approval data --}}
+                                        @if($data->proposalID == $dataproposal->proposalID) {{-- check if data in approval(proposalID) is same with proposal(proposalID) --}}
+                                        <tr>
+                                            <td scope="row">{{$loop->iteration}}</td>
+                                            <td>{{$dataproposal->studentprofile->studentName}}</td>
+                                            <td>  <button type="button" onclick="window.location='{{route('Approval.edit',$data->approvalID)}}'" class="btn btn-primary">Edit</button></td>
+                                        </tr>
+                                        @endif
+                                @endforeach
+                                @if ($getforeignkey->contains('proposalID', $dataproposal->proposalID)== false) {{-- check if data in proposal(proposalID) is not in proposal table --}}
                                     <tr>
                                         <td scope="row">{{$loop->iteration}}</td>
                                         <td>{{$dataproposal->studentprofile->studentName}}</td>
-                                        <td>  <button type="button" onclick="window.location='{{route('Approval.edit',$data->approvalID)}}'" class="btn btn-primary">Edit Status</button></td>
+                                     <td><button type="button" onclick="window.location='{{route('viewApproval',$dataproposal->proposalID)}}'" class="btn btn-primary">Add</button></td>
                                     </tr>
-                                    @endif
+                                @endif
                                 @endforeach
-
-
-                            @endforeach
                         </table>
 
                     </div>
