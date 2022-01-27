@@ -6,7 +6,6 @@ use App\Http\Controllers\TitleController;
 use App\Http\Controllers\ExpertiseController;
 use App\Http\Controllers\LectureController;
 use App\Http\Controllers\LogbookController;
-use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SvHuntingController;
 use Illuminate\Support\Facades\Route;
@@ -55,11 +54,6 @@ Route::get('/listApprovetLecture', [inventoryusageController::class, 'listApprov
 Route::resource('/expertise', ExpertiseController::class);
 Route::get('/ListLecture', [ExpertiseController::class, 'listLecture'])->name('ListLectureExpertise');
 Route::get('/SvHunting/expertise/{id}', [ExpertiseController::class, 'view'])->name('SvHuntingExpertise');
-
-
-
-//Proposal
-Route::resource('/proposal', ProposalController::class);
 
 //title
 Route::resource('/title', TitleController::class);
