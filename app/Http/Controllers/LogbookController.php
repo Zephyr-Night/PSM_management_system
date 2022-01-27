@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\LogbookModel;
 class LogbookController extends Controller
 {
-    //display the list of the logbook at student dashboard
+
     public function index()
     {
+        //display the list of the logbook at student dashboard
         $result = new LogbookModel();
 
         $listlogbookstudent = $result->listlogbook();
@@ -26,6 +27,7 @@ class LogbookController extends Controller
     {
         $result = new LogbookModel();
         $checksv = $result->checksv();
+
 
         return view('logbook.generatelogbook',compact(['checksv']));
     }
@@ -47,7 +49,7 @@ class LogbookController extends Controller
         $datauser = $result->showspecificlogbook($id);
         $approve = $result->listlogbooktest();
 
-        return view('logbook.viewlogbookspecific',compact(['datauser','approve']));
+       return view('logbook.viewlogbookspecific',compact(['datauser','approve']));
     }
 
     //edit the logbook of the specific id
@@ -72,31 +74,17 @@ class LogbookController extends Controller
         return redirect('logbook');
     }
 
-    //delete the logbook data
-    public function destroy($id)
-    {
-        $result = new LogbookModel();
-
-        $data = $id;
-
-        $result->deleteLogbook($data);
-
-
-        return redirect('logbook');
-    }
-
-    //display the logbook list and the check the approved supervisor in lecture dashboard
+    //display the student logbook list of the approved supervisor
     public function indexlogbooklecture()
     {
         $result = new LogbookModel();
         $listlogbooklecture = $result->logbookstudent();
         $checkapprovestudent = $result->checkapprovestudent();
-         print($listlogbooklecture);
 
         return view('logbook.logbookstudent',compact(['listlogbooklecture','checkapprovestudent']));
     }
 
-    //verify the logbook of thespecific id
+    //verify the logbook of the specific id
     public function verifylogbook( $id)
     {
         $result = new LogbookModel();
@@ -116,7 +104,6 @@ class LogbookController extends Controller
         $result = new LogbookModel();
         $data = $request;
         $dataid = $id;
-        //update the data
         $result->PUTmethodlecture($data,$dataid);
 
         return redirect('indexlogbooklecture');

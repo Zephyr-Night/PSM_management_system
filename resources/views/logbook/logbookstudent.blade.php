@@ -21,10 +21,10 @@
                         <table class="table" id="tableId">
                             <tr>
                                 <th>No</th>
-                                <th>Matric ID</th>
                                 <th>Supervisor Name</th>
+                                <th>Student Name</th>
                                 <th>Meeting Date</th>
-                                <th colspan="2" style="text-align: center; ">Status</th>
+                                <th colspan="2" style="text-align: left; ">Action</th>
 
                             </tr>
                             @foreach ($listlogbooklecture as $logbooklist)
@@ -55,7 +55,7 @@
                                             <td></td>
                                         @else
                                         <td>
-                                            <button type="button" onclick="window.location='{{route('verifylogbook',$logbooklist->id)}}'" class="btn btn-info">view</button>
+                                            <button type="button" onclick="window.location='{{route('verifylogbook',$logbooklist->id)}}'" class="btn btn-info">View</button>
                                         </td>
                                         @endif
                                         </tr>
@@ -74,4 +74,4 @@
 
 
 @endsection
-<link rel="stylesheet" href="/css/sidebar.css">
+<link rel="stylesheet" href="/css/sidebar.css"

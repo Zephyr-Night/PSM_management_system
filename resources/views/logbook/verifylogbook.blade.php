@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Verify Logbook</div>
+                    <div class="card-header">Add request</div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -21,38 +21,38 @@
                             @csrf
                             <input type="hidden" name="_method" value="PUT">
 
-                            <label>Name:</label>
-                            <label >{{$editlogbookdata->fkStudent->studentName}}</label> <br>
+                            <label>Name</label>
+                            <label style="margin-left:5.3em">: {{$editlogbookdata->fkStudent->studentName}}</label> <br>
 
                             @foreach ($checksv as $getID)
-                            <label>Matric Id:</label>
-                            <label >{{$getID->userID}}</label> <br>
+                            <label>Matric Id</label>
+                            <label style="margin-left:4.0em">: {{$getID->userID}}</label> <br>
                             @endforeach
 
+                            <label>Supervisor Name</label>
+                            <label style="margin-left:0.2em">: {{Auth::user()->profileFK->lectureName}}</label> <br>
 
-                            <label>Supervisor Name:</label>
-                            <label >{{Auth::user()->profileFK->lectureName}}</label> <br>
+                            <label>Meeting Date</label>
+                            <label style="margin-left:1.9em">: {{$editlogbookdata->meetingDate}}</label> <br>
 
-                            <label>Meeting date:</label>
-                            <label >{{$editlogbookdata->meetingDate}}</label> <br>
+                            <label>Start Time</label>
+                            <label style="margin-left:3.3em">: {{$editlogbookdata->startTime}}</label> <br>
 
-                            <label>Start Time:</label>
-                            <label >{{$editlogbookdata->startTime}}</label> <br>
+                            <label>End Time</label>
+                            <label style="margin-left:3.8em">: {{$editlogbookdata->endTime}}</label> <br>
 
-                            <label>End Time:</label>
-                            <label >{{$editlogbookdata->endTime}}</label> <br>
+                            <label>Current Progress</label>
+                            <label style="margin-left:0.4em">: {{$editlogbookdata->currentProgress}}</label> <br>
 
-                            <label>Current Progress:</label>
-                            <label >{{$editlogbookdata->currentProgress}}</label> <br>
-
-                            <label>Discussion Detail:</label>
-                            <label >{{$editlogbookdata->discDetail}}</label> <br>
+                            <label>Discussion Detail</label>
+                            <label style="margin-left:0.3em">: {{$editlogbookdata->discDetail}}</label> <br>
 
                             <label>Action Plan:</label>
-                            <label >{{$editlogbookdata->actPlan}}</label> <br><br>
+                            <label style="margin-left:2.7em">: {{$editlogbookdata->actPlan}}</label> <br><br>
 
                             <input type="submit" value="Verify" class="btn btn-success" name="submitbutton">
-                            <button style="margin:7px;" type="button" onclick="window.location='{{route('indexlogbooklecture')}}'" class="btn btn-primary">Back</button>
+                            <button type="button" onclick="window.location='{{route('indexlogbooklecture')}}'" class="btn btn-primary">Back</button>
+                        
                         </form>
                     </div>
                 </div>

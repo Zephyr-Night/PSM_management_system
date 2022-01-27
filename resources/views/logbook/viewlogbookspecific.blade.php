@@ -16,34 +16,33 @@
                             </div>
                         @endif
                         {{-- {{Auth::user()->userID}} --}}
-                    
-                        <label>Name:</label>
-                        <label >{{$datauser->fkStudent->studentName}}</label> <br>
+                        
+                        <label>Name</label>
+                        <label style="margin-left:5.3em">: {{$datauser->fkStudent->studentName}}</label> <br>
 
                         <label>Matric Id:</label>
-                        <label >{{Auth::user()->userID}}</label> <br>
+                        <label style="margin-left:3.9em">: {{Auth::user()->userID}}</label> <br>
 
-                        <label>Supervisor Name:</label>
-                        <label >{{$approve->fkLecture->lectureName}}</label> <br>
+                        <label>Supervisor Name</label>
+                        <label style="margin-left:0.2em">: {{$approve->fkLecture->lectureName}}</label> <br>
 
+                        <label>Meeting Date</label>
+                        <label style="margin-left:1.9em">: {{$datauser->meetingDate}}</label> <br>
 
-                        <label>Meeting date:</label>
-                        <label >{{$datauser->meetingDate}}</label> <br>
+                        <label>Start Time</label>
+                        <label style="margin-left:3.3em">: {{$datauser->startTime}}</label> <br>
 
-                        <label>Start Time:</label>
-                        <label >{{$datauser->startTime}}</label> <br>
+                        <label>End Time</label>
+                        <label style="margin-left:3.7em">: {{$datauser->endTime}}</label> <br>
 
-                        <label>End Time:</label>
-                        <label >{{$datauser->endTime}}</label> <br>
+                        <label>Current Progress</label>
+                        <label style="margin-left:0.4em">: {{$datauser->currentProgress}}</label> <br>
 
-                        <label>Current Progress:</label>
-                        <label >{{$datauser->currentProgress}}</label> <br>
+                        <label>Discussion Detail</label>
+                        <label style="margin-left:0.3em">: {{$datauser->discDetail}}</label> <br>
 
-                        <label>Discussion Detail:</label>
-                        <label >{{$datauser->discDetail}}</label> <br>
-
-                        <label>Action Plan:</label>
-                        <label >{{$datauser->actPlan}}</label> <br><br>
+                        <label>Action Plan</label>
+                        <label style="margin-left:3.0em">: {{$datauser->actPlan}}</label> <br><br>
 
                         <button type="button" onclick="window.location='{{route('logbook.index')}}'" class="btn btn-primary">Back</button>
 
