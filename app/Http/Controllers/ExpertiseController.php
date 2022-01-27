@@ -32,10 +32,12 @@ class ExpertiseController extends Controller
     //view expertise page for student
     public function view($id){
         $result = new ExpertiseModel();
-        
+        $info = new ExpertiseModel();
+
         $lectureExpertise = $result->indexView($id);
+        $lectureInfo = $info-> lectureInfo($id);
         
-        return view('expertise.viewStudent', compact(['lectureExpertise']));
+        return view('expertise.viewStudent', compact(['lectureExpertise','lectureInfo']));
     }
 
     /**

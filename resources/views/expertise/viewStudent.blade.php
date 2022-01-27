@@ -16,7 +16,7 @@
                             </div>
                         @endif
                         {{-- Lecture info section --}}
-                        @foreach ($lectureExpertise as $info)
+                        @foreach ($lectureInfo as $info)
                             @csrf
                             <div class="form-group">
                                 <div class="form-group row">
@@ -46,7 +46,7 @@
 
                                 </div>
                             </div>
-                        @endforeach
+                        
 
                     </div>
                 </div>
@@ -84,10 +84,11 @@
                                 @default
                             @endswitch
                             {{-- button to select the lecture as sv and redirect it to the add proposal page --}}
-                            <button type="button" id="lectureId" name='lectureId' onclick="window.location='{{route('addProposal',$expertise->lectureId)}}'" class="btn btn-primary">Select</button>
                             </div>
                             <br>
                         @endforeach
+                        <button type="button" id="lectureId" name='lectureId' onclick="window.location='{{route('addProposal',$info->lectureId)}}'" class="btn btn-primary">Select</button>
+                    @endforeach
                     </div>
                 </div>
             </div>
