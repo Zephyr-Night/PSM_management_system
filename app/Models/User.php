@@ -46,12 +46,12 @@ class User extends Authenticatable
 
     public function profileFK()
     {
-        return $this->hasOne('App\Models\profileModel');
+        return $this->hasOne('App\Models\lectureprofileModel','user_id', 'id');
     }
 
     public function studentprofileFK()
     {
-        return $this->hasOne('App\Models\studentprofileModel');
+        return $this->hasOne('App\Models\studentprofileModel', 'user_id', 'id');
     }
 
 }

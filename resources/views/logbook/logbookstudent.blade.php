@@ -20,15 +20,17 @@
                         <br><br>
                         <table class="table" id="tableId">
                             <tr>
+                                <th>No</th>
+                                <th>Matric ID</th>
                                 <th>Supervisor Name</th>
-                                <th>Student Name</th>
                                 <th>Meeting Date</th>
-                                <th colspan="2" style="text-align: left; ">Action</th>
+                                <th colspan="2" style="text-align: center; ">Status</th>
 
                             </tr>
                             @foreach ($listlogbooklecture as $logbooklist)
                                 @if ($logbooklist->lectureId == Auth::user()->id)
                                     <tr>
+                                        <td scope="row">{{$loop->iteration}}</td>
                                         <td>{{Auth::user()->profileFK->lectureName}}</td>
                                         <td>{{$logbooklist->fkStudent->studentName}}</td>
                                         <td>{{$logbooklist->meetingDate}}</td>
@@ -37,15 +39,14 @@
                                         <td></td>
                                     @else
                                     <td>
-                                        <button type="button" onclick="window.location='{{route('verifylogbook',$logbooklist->id)}}'" class="btn btn-info">View</button>
+                                        <button type="button" onclick="window.location='{{route('verifylogbook',$logbooklist->id)}}'" class="btn btn-info">view</button>
                                     </td>
                                     @endif
                                     </tr>
                                 @else
-                                    @foreach ($checkapprovestudent as $checkstudentapprovelist)
-                                    @if ($checkstudentapprovelist->lectureId == Auth::user()->profileFK->lectureId)
-
+                                    @if ($checkapprovestudent->lectureId == Auth::user()->profileFK->lectureId)
                                         <tr>
+                                            <td scope="row">{{$loop->iteration}}</td>
                                             <td>{{Auth::user()->profileFK->lectureName}}</td>
                                             <td>{{$logbooklist->fkStudent->studentName}}</td>
                                             <td>{{$logbooklist->meetingDate}}</td>
@@ -54,12 +55,12 @@
                                             <td></td>
                                         @else
                                         <td>
-                                            <button type="button" onclick="window.location='{{route('verifylogbook',$logbooklist->id)}}'" class="btn btn-info">View</button>
+                                            <button type="button" onclick="window.location='{{route('verifylogbook',$logbooklist->id)}}'" class="btn btn-info">view</button>
                                         </td>
                                         @endif
                                         </tr>
                                     @endif
-                                    @endforeach
+
                                 @endif
                             @endforeach
                         </table>

@@ -91,7 +91,7 @@ class LogbookController extends Controller
         $result = new LogbookModel();
         $listlogbooklecture = $result->logbookstudent();
         $checkapprovestudent = $result->checkapprovestudent();
-        // print($checkapprovestudent);
+         print($listlogbooklecture);
 
         return view('logbook.logbookstudent',compact(['listlogbooklecture','checkapprovestudent']));
     }
@@ -108,7 +108,7 @@ class LogbookController extends Controller
         // print($editlogbookdata);
 
         return view('logbook.verifylogbook',compact(['editlogbookdata','checksv']));
-    }                                       
+    }
 
     //confirm the verification logbook
     public function confirmationverifylogbook(Request $request, $id)
