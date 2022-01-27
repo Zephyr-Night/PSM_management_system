@@ -54,12 +54,25 @@
                             <label >{{$getvalueform->fkproposal->project_domain}}</label><br>
 
 
-                            <label for="status">Proposal Status:</label>
-                            <select class="form-control" name="status" value="{{$getvalueform->status}}">
-                                <option value="Accepted">Accepted</option>
-                                <option value="Rejected">Rejected</option>
-                            </select><br/>
 
+
+
+                            <label for="status">Proposal Status:</label>
+                            @switch($getvalueform->status)
+                                @case('Accepted')
+                                    <select class="form-control" name="status" >
+                                        <option value="Accepted" selected>Accepted</option>
+                                        <option value="Rejected">Rejected</option>
+                                    </select><br/>
+                                @break
+                                 @case('Rejected')
+                                    <select class="form-control" name="status" >
+                                        <option value="Accepted">Accepted</option>
+                                        <option value="Rejected" selected>Rejected</option>
+                                    </select><br/>
+                                 @break
+                            @default
+                            @endswitch
                             <label for="reasons" class="form-label">Reason:</label>
                             <input type="text" name="reasons" id="reasons" class="form-control" value="{{$getvalueform->reasons}}"><br/>
 
