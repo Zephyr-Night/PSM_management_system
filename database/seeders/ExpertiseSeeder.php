@@ -17,9 +17,39 @@ class ExpertiseSeeder extends Seeder
         $expertise = [
             [
                'lectureId'=>'1',
-               'expertiseName' => 'example',
+               'expertiseName' => 'Database',
                'expertiseLevel' => 'High'
-            ]
+            ],
+            [
+                'lectureId'=>'1',
+                'expertiseName' => 'Software Requirement: Computer Software',
+                'expertiseLevel' => 'High'
+             ],
+             [
+                'lectureId'=>'2',
+                'expertiseName' => 'Mobile Application Development',
+                'expertiseLevel' => 'High'
+             ],
+             [
+                'lectureId'=>'3',
+                'expertiseName' => 'Cloud Computing',
+                'expertiseLevel' => 'Very High'
+             ],
+             [
+                'lectureId'=>'3',
+                'expertiseName' => 'Mobile Application Development',
+                'expertiseLevel' => 'Medium'
+             ],
+             [
+                'lectureId'=>'3',
+                'expertiseName' => 'Artificial Inteligence',
+                'expertiseLevel' => 'Low'
+             ],
+             [
+                'lectureId'=>'4',
+                'expertiseName' => 'Multimedia',
+                'expertiseLevel' => 'High'
+             ],
         ];
 
 

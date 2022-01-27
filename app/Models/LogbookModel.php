@@ -161,7 +161,7 @@ class LogbookModel extends Model
 
         $postupdate->lectureId = $id->fkLecture->lectureId;
 
-        //retieve all the records using all method
+        //retrieve all the records using all method
         $postupdate->update($data->all());
     }
 
