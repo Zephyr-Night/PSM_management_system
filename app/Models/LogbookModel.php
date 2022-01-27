@@ -35,20 +35,25 @@ class LogbookModel extends Model
         return $this->belongsTo('App\Models\lectureprofileModel','lectureId','lectureId');
     }
 
-     //index
-     public function listlogbook()
-     {
+     //index for the student to view the logbook list
+    public function listlogbook()
+    {
 
+        //get user Primary Key data by using session
         $getsession = session()->get('userprimarykey');
 
+        //create new model instance
         $user = new studentprofileModel();
 
+        //find the first user_id data (foreign key) in database table or else fail(error)
         $user = $user::where('user_id',$getsession)->firstOrFail();
 
+        //get logbook primary key for specific user
+        //use 'with()' to access data from other table(join table) by using foreign key (lectureId), fkLecture function fkLecture()
         $titlelist = LogbookModel::Select()->where('studentId',$user->studentId)->with('fkLecture')->get();
 
         return $titlelist;
-     }
+    }
 
 
      //display sv data in index
@@ -61,6 +66,7 @@ class LogbookModel extends Model
 
         $user = $user::where('user_id',$getsession)->firstOrFail();
 
+        //get the approval where the user of specific id join table with fkLecture function to get the lecture data(sv data)
         $checksvforFKinsert = ApprovalModel::where('studentId',$user->studentId)->with('fkLecture')->first();
 
         return $checksvforFKinsert;
@@ -76,33 +82,37 @@ class LogbookModel extends Model
 
         $user = $user::where('user_id',$getsession)->firstOrFail();
 
+        //get all approval primary key for specific user (studentId)
+            //->where('status','LIKE','Accepted')->
+            //access data from other table by using foreign key (lectureId) using with()
+            //get all the lecture that accepted the student
         $checksv1 = ApprovalModel::Select()->where('studentId',$user->studentId)->where('status', 'LIKE', 'Accepted')->with('fkLecture')->get();
 
         return $checksv1;
     }
 
-     public function checklecturedataindashboard($value)
-     {
+    public function checklecturedataindashboard($value)
+    {
 
         $resultmatricID = User::where('id',$value)->get();
 
         return $resultmatricID;
-     }
+    }
 
 
-
-    //store
+    //store the user logbook data as the student
     public function store($data)
     {
-        //get user primary key
+        //get user Primary Key data by using session
         $getsession = $data->session()->get('userprimarykey');
         
         //create new model instance
         $user = new studentprofileModel();
 
-        //find a specific lecture details by using where(user_id == users (table) primary key)
+        //find the first user_id data (foreign key) in database table or else fail(error)
         $user = $user::where('user_id',$getsession)->firstOrFail();
 
+        //create the logbook records using all method
         $addlogbookdata = $data->all();
 
         $checksvforFKinsert = new studentprofileModel();
@@ -122,22 +132,26 @@ class LogbookModel extends Model
         $user->logbook()->save($saveinfunctionstudent);
     }
 
+    //display the logbook data
     public function showspecificlogbook($data)
     {
+        //retrieve logbook data
         $updatetitle = LogbookModel::findOrFail($data);
 
         return $updatetitle;
     }
 
-     public function editlogbook($data)
-     {
+    //edit logbook data
+    public function editlogbook($data)
+    {
+        //retrieve the logbook data to edit
         $updatelogbook = LogbookModel::findOrFail($data);
 
         return $updatelogbook;
-     }
+    }
 
     
-    //
+    //to modify the data (update data)
     public function PUTmethod($data, $dataid)
     {
         $postupdate = LogbookModel::whereid($dataid)->first();
@@ -147,6 +161,7 @@ class LogbookModel extends Model
 
         $postupdate->lectureId = $id->fkLecture->lectureId;
 
+        //retieve all the records using all method
         $postupdate->update($data->all());
     }
 
@@ -156,8 +171,6 @@ class LogbookModel extends Model
         $deleterequest = LogbookModel::findOrFail($data);
         $deleterequest->delete();
     }
-
-
 
     //index lecture dasboard
     public function logbookstudent()
@@ -171,10 +184,9 @@ class LogbookModel extends Model
         $datalogbook = LogbookModel::Select()->get();
 
         return $datalogbook;
-
     }
 
-    //index lecture dasboard
+    //check the approved student in ApprovalModel
     public function checkapprovestudent()
     {
         $getsession = session()->get('userprimarykey');
@@ -188,9 +200,7 @@ class LogbookModel extends Model
         return $approvestudent;
     }
 
-
-
-    //verify logbook
+    //verify logbook data (view the logbook data of the student as a lecture)
     public function verifylogbookmodel($data)
     {
        $updatelogbook = LogbookModel::findOrFail($data);
@@ -198,6 +208,7 @@ class LogbookModel extends Model
        return $updatelogbook;
     }
 
+    //to modify the data (update verify)
     public function PUTmethodlecture($data, $dataid)
     {
         $getsession = session()->get('userprimarykey');
