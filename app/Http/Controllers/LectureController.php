@@ -9,7 +9,7 @@ class LectureController extends Controller
 {
 
 
-    public function edit($id)
+    public function edit($id)//
     {
         $result = new lectureprofileModel();
 
