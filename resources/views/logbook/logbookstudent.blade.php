@@ -21,38 +21,44 @@
                         <table class="table" id="tableId">
                             <tr>
                                 <th>No</th>
-                                <th>Matric ID</th>
                                 <th>Supervisor Name</th>
+                                <th>Student Name</th>
                                 <th>Meeting Date</th>
-                                <th colspan="2" style="text-align: center; ">Status</th>
-
+                                <th colspan="2" style="text-align: center; ">Action</th>
                             </tr>
+
                             @foreach ($listlogbooklecture as $logbooklist)
                                 {{-- check approve table is empty --}}
                                    @if (empty($checkapprovestudent))
 
                                    @else
-                                   @if ($logbooklist->lectureId == null)
-                                   <tr>
-                                       <td scope="row">{{$loop->iteration}}</td>
-                                       <td>{{Auth::user()->profileFK->lectureName}}</td>
-                                       <td>{{$logbooklist->fkStudent->studentName}}</td>
-                                       <td>{{$logbooklist->meetingDate}}</td>
+                                        @if ($logbooklist->lectureId == null)
+                                            <tr>
+                                                <td scope="row">{{$loop->iteration}}</td>
+                                                <td>{{Auth::user()->profileFK->lectureName}}</td>
+                                                <td>{{$logbooklist->fkStudent->studentName}}</td>
+                                                <td>{{$logbooklist->meetingDate}}</td>
+                                                
+                                                @if($logbooklist->verify == true)
+                                                <td></td>
+                                                @else
+                                                <td>
+                                                    <button type="button" onclick="window.location='{{route('verifylogbook',$logbooklist->id)}}'" class="btn btn-info">view</button>
+                                                </td>
+                                                @endif
+                                            </tr>
 
-                                       @if($logbooklist->verify == true)
-                                       <td></td>
-                                       @else
-                                       <td>
-                                           <button type="button" onclick="window.location='{{route('verifylogbook',$logbooklist->id)}}'" class="btn btn-info">view</button>
-                                       </td>
-                                       @endif
-                                   </tr>
-                                   @else
-                               @endif
-                                   @endif
+                                    @elseif ($logbooklist->lectureId = Auth::user()->profileFK->lectureId)
+                                    <tr>
+                                        <td scope="row">{{$loop->iteration}}</td>
+                                        <td>{{Auth::user()->profileFK->lectureName}}</td>
+                                        <td>{{$logbooklist->fkStudent->studentName}}</td>
+                                        <td>{{$logbooklist->meetingDate}}</td>
+                                    </tr>
+                                    @endif
+                                        @endif
                             @endforeach
                         </table>
-
                     </div>
                 </div>
             </div>
