@@ -37,7 +37,7 @@
                             <label for="project_description" class="form-label">Project Description:</label>
                             <input type="text" name="project_description" id="project_description" class="form-control" value="{{$valuetitle->project_description}}"><br/>
 
-                            <input type="submit" name="submit" value="Submit Request" class="btn btn-success">
+                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
                         </form>
                     </div>
                 </div>
