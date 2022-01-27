@@ -21,37 +21,37 @@
                             @csrf
                             <input type="hidden" name="_method" value="PUT">
 
-                            <label for="name" class="form-label">Name:</label>
-                            <label style="margin-left:2.5em">{{Auth::user()->studentprofileFK->studentName}}</label><br>
+                            <label for="studentName" class="form-label">Name</label>
+                            <label style="margin-left:5.3em">: {{Auth::user()->studentprofileFK->studentName}}</label><br>
 
-                            <label for="matricID" class="form-label">Matric ID:</label>
-                            <label style="margin-left:2.5em">{{Auth::user()->userID}}</label><br>
+                            <label for="matricId" class="form-label">Matric ID</label>
+                            <label style="margin-left:3.9em">: {{Auth::user()->userID}}</label><br>
 
                             @foreach ($checksv as $findsvname)
-                            <label for="svName" class="form-label">Supervisor Name:</label>
-                            <label >{{$findsvname->fkLecture->lectureName}}</label><br>
+                            <label for="lectureName" class="form-label">Supervisor Name</label>
+                            <label style="margin-left:0.2em">: {{$findsvname->fkLecture->lectureName}}</label><br>
                             @endforeach
 
-                            <label for="meetingDate" class="form-label">Meeting date:</label>
+                            <label for="meetingDate" class="form-label">Meeting date</label>
                             <input type="date" name="meetingDate" id="meetingDate" class="form-control" value="{{$editlogbookdata->meetingDate}}"><br/>
 
-                            <label for="startTime" class="form-label">Start Time:</label>
+                            <label for="startTime" class="form-label">Start Time</label>
                             <input type="time" name="startTime" id="startTime" class="form-control" value="{{$editlogbookdata->startTime}}"><br/>
 
-                            <label for="endTime" class="form-label">End Time:</label>
+                            <label for="endTime" class="form-label">End Time</label>
                             <input type="time" name="endTime" id="endTime" class="form-control" value="{{$editlogbookdata->endTime}}"><br/>
 
-                            <label for="currentProgress" class="form-label">Current progress:</label>
+                            <label for="currentProgress" class="form-label">Current Progress</label>
                             <input type="text" name="currentProgress" id="currentProgress" class="form-control" value="{{$editlogbookdata->currentProgress}}"><br/>
 
-                            <label for="discDetail" class="form-label">Discussion Details:</label>
+                            <label for="discDetail" class="form-label">Discussion Details</label>
                             <input type="text" name="discDetail" id="discDetail" class="form-control" value="{{$editlogbookdata->discDetail}}"><br/>
 
-                            <label for="actPlan" class="form-label">Action plan:</label>
+                            <label for="actPlan" class="form-label">Action Plan</label>
                             <input type="text" name="actPlan" id="actPlan" class="form-control" value="{{$editlogbookdata->actPlan}}"><br/>
 
                             <input type="submit" name="submit" value="Update Logbook" class="btn btn-success">
-                            <button style="margin:7px;" type="button" onclick="window.location='{{route('logbook.index')}}'" class="btn btn-primary">Back</button>
+                            <button type="button" onclick="window.location='{{route('logbook.index')}}'" class="btn btn-primary">Back</button>
                         
                         </form>
                     </div>
