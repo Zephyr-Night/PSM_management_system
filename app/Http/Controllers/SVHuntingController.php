@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 
 class SvHuntingController extends Controller
 {
+    //display list of lecturer
     public function index()
     {
         $result = new SVHuntingModel();
@@ -25,6 +26,8 @@ class SvHuntingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //for student to add proposal
     public function addProposal($lectureId)
     {
         $result = new SVHuntingModel();
@@ -42,6 +45,8 @@ class SvHuntingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    //store the added proposal to database
     public function store(Request $request)
     {
         $result = new SVHuntingModel();
@@ -52,7 +57,8 @@ class SvHuntingController extends Controller
 
         return redirect('SvHunting');
     }
-
+    
+    //display supervision details
     public function mySupervisor(){
         $result = new SVHuntingModel();
 
@@ -61,6 +67,7 @@ class SvHuntingController extends Controller
        return view('SvHunting.MySupervisor',compact(['listProposal']));
     }
 
+    //show the submitted proposal
     public function view($id)
     {
         $result = new SVHuntingModel();
@@ -78,6 +85,8 @@ class SvHuntingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //for student to edit proposal
     public function edit($id)
     {
         $result = new SVHuntingModel();
@@ -96,6 +105,8 @@ class SvHuntingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //update request to the database
     public function update(Request $request, $id)
     {
         $result = new SVHuntingModel();
@@ -113,6 +124,8 @@ class SvHuntingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //delete proposal
     public function destroy($id)
     {
         $result = new SVHuntingModel();
