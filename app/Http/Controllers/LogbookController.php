@@ -108,5 +108,4 @@ class LogbookController extends Controller
 
         return redirect('indexlogbooklecture');
     }
-
 }
