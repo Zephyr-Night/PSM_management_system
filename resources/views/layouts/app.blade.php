@@ -21,8 +21,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm   navbar-sticky-top">
+            <div class="container-fluid">
                 {{-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a> --}}
@@ -67,6 +67,17 @@
             </div>
         </nav>
     </div>
+    <br><br>
     @yield('content')
 </body>
 </html>
+
+<style>
+    .navbar-sticky-top
+{
+    position: fixed;
+    z-index: 999;
+    opacity:1;
+    width: 100%;
+}
+</style>
