@@ -13,7 +13,7 @@ class LectureController extends Controller
     {
         $result = new lectureprofileModel();
 
-        $updateprofile = $result->changetitle1($id);
+        $updateprofile = $result->changeprofile($id);
 
         return view('lecture.edit',compact(['updateprofile']));
     }

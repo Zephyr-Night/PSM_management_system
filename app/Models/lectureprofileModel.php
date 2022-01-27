@@ -59,7 +59,7 @@ class lectureprofileModel extends Model
 
 
      //index
-     public function changetitle1($data)
+     public function changeprofile($data)
     {
         $updateprofile = lectureprofileModel::Select()->where('user_id',$data)->get();
 
