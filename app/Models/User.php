@@ -46,7 +46,9 @@ class User extends Authenticatable
 
     public function profileFK()
     {
-        return $this->hasOne('App\Models\lectureprofileModel','user_id', 'id');
+        return $this->hasOne('App\Models\lectureprofileModel');
+        // return $this->hasOne('App\Models\profileModel');
+
     }
 
     public function studentprofileFK()
